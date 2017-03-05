@@ -4,22 +4,27 @@ require_once('../wp-config.php');
 $mysqli = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD);
 mysqli_select_db($mysqli, DB_NAME);
 echo "<html><head><title>featback</title>";
-echo "<link rel=\"stylesheet\" type=\"text/css\" href=\"styles.css\"></head><body>";
+echo "  <link rel=\"stylesheet\" type=\"text/css\" href=\"styles.css\">
+        <script type=\"text/javascript\" src=\"client-side-controller.js \"></script>
+        </head><body>";
 echo "  <center><div class=\"container\">
         <div class=\"header\"><h1>f-eat-back</h1>
         <h2>Isst du noch oder geniesst du schon?</h2></div>";
 
+/* === Daten ===*/
+$today = date('Y-m-d');
+$weekday = date('N');
 
-/* ========================Anzahl Mahlzeiten==================== */
+/* ========================Aktuelles Speiseplandatum==================== */
 echo "  
-        <div class=\"fastinsight\">";
+        <div class=\"fastinsight\">";/*
 $query = "SELECT Count(*) as Anzahl FROM wp_users";
 if ($result = $mysqli->query($query)) {
-    $row = $result->fetch_row();
-    echo "<h3>Essen am Donnerstag, den 2.M&auml;rz 2017: "/* . $row[0] . */ . "</h3>";
-    /* free result set */
+    $row = $result->fetch_row();*/
+    echo "<h3>Essen am " . $today /* . $row[0] . */ . "</h3>";
+    /*
     $result->free();
-}
+}*/
 echo "</div><div class=\"content\">";
 
 /* gets the data from a URL */
@@ -39,9 +44,61 @@ function get_data($url) {
 /*$json_string = file_get_contents('http://openmensa.org/api/v2/canteens/33/days/2017-03-02/meals.json/');
 */
 
-/*Datum auswählen*/
-$date_meals = "2017-03-02";
-$meals_on_a_specific_date = "http://openmensa.org/api/v2/canteens/33/days/" . $date_meals . "/meals.json/";
+echo "<form id=\"form-mission\" method=\"post\" action=\"index.php\">
+    <ul>
+    <li>
+        <select name=\"membre\">
+            <option value=0> Montag </option>
+            <option value=1> Dienstag </option>
+            <option value=2> Mittwoch </option>
+            <option value=3> Donnerstag </option>
+            <option value=4> Freitag </option>
+        </select>
+    </li>
+
+    <!--Content-->
+    <li><textarea name=\"texte\" id=\"text_area\" ></textarea></li>
+
+    <!-- Submit -->
+    <li class=\"except\"><input type=\"submit\" value=\"Submit\" /></li>
+    </ul>
+
+</form>";
+
+/*Daten für Mensa ziehen*/
+$mensa = 33; /*33 = DHBW Karlsruhe*/
+$mensa_information = "http://openmensa.org/api/v2/canteens/" . $mensa . ".json/";
+$mensa_information_json_string = get_data($mensa_information);
+$imensa = json_decode($mensa_information_json_string, true);
+
+$status = true;
+if($weekday > 5){
+    $status = false;
+}
+
+echo "<b>Ausgew&auml;hlte Mensa:</b>";
+echo "<br/><h3>";
+print_r($imensa["name"]);
+echo "</h3>";
+echo "Heute ";
+if($status){
+    echo "offen";
+}else{
+    echo "geschlossen";
+}
+echo "<hr/>";
+
+/*Datum ziehen und Tage addieren / substrahieren */
+/*$today = getdate();
+print_r($today);
+$today = $today[year] . "-" . $today[mon] . "-" . $today[mday];
+echo("<br/>today: " . $today . "<br/>");*/
+
+/*Datum des Speiseplans auswählen*/
+$date_meals = $today;
+
+/*Daten für Mahlzeiten ziehen*/
+$meals_on_a_specific_date = "http://openmensa.org/api/v2/canteens/" . $mensa . "/days/" . $date_meals . "/meals.json/";
 $json_string = get_data($meals_on_a_specific_date);
 $parsed_json_string = json_decode($json_string, true);
 
