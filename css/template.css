@@ -3,6 +3,21 @@ html, body {
     width: 100%;
 }
 
+#erstesEssen{
+    float: left;
+    width: 30%;
+}
+
+#zweitesEssen{
+    float: left;
+    width: 30%;
+}
+
+#drittesEssen{
+    float: left;
+    width: 30%;
+}
+
 .navbar {
 opacity: 0.8;
 background: #000000;
