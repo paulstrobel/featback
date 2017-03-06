@@ -1,9 +1,9 @@
 //jQuery to collapse the navbar on scoll
 $(window).scroll(function() {
     if($(".navbar").offset().top > 50) {
-        $(".navbar-fixed-top").addClass("top-nav-collapse");
+        $(".navbar-fixed-top").addClass("top-nav-collapse active");
     } else {
-        $(".navbar-fixed-top").removeClass("top-navbar-collapse");
+        $(".navbar-fixed-top").removeClass("top-navbar-collapse active");
     }
 });
 

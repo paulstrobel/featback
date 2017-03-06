@@ -3,6 +3,40 @@ html, body {
     width: 100%;
 }
 
+.navbar {
+opacity: 0.8;
+background: #000000;
+border: 0;
+color: white;
+}
+
+.navbar-default .navbar-nav > li > a{
+    color: white;
+}
+.navbar-default .navbar-nav > li > a:hover{
+    color:red;
+}
+
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:focus, .navbar-default .navbar-nav > .active > a:hover{
+    background: red;
+    color: white;
+}
+
+.navbar-default .navbar-brand{
+    color: white;
+    text-shadow: 0;
+}
+.navbar-default .navbar-brand:hover{
+    color:red;
+    text-shadow: 0;
+}
+
+.navbar-brand {
+font-family: 'Oswald', Arial, Verdana;
+text-transform: uppercase;
+color: white;
+}
+
 .menue-section {
     height: auto !important;
     min-height: 100%;
@@ -10,6 +44,22 @@ html, body {
     padding-top: 50px;
     background:url(../img/w1.jpg) no-repeat center;
     background-size: cover;
+    text-align: center;
+    color: snow;
+    text-shadow: 2px 2px 0 rgba(0,0,0,0.5);
+}
+
+.menue-section h1{
+    font-family: 'Oswald', Arial, Verdana;
+    font-size: 60px;
+    color: snow;
+    text-transform: uppercase;
+}
+
+.menue-section h2{
+    font-family: 'Roboto', Arial, Verdana;
+    font-size: 20px;
+    color: snow;
 }
 
 .about-section{
@@ -29,3 +79,59 @@ html, body {
     background:url(../img/w3.jpg) no-repeat center;
     background-size: cover;
 }
+
+
+
+
+/*** EXTERNE**/
+
+
+.container{
+	text-align: center;
+
+		flex-wrap: wrap;
+}
+
+.block{
+	width: 20%;
+	background:white;
+	position: relative;
+    text-shadow: none;
+    margin-left: 1em;
+    margin-right: 1em;
+	min-height: 200px;
+}
+
+
+
+/*.block > div {display: inline-block;}*/
+.title{
+	font-size: 1.5em;
+	color: darkblue;
+	margin-bottom: 0.4em;
+}
+.smalltitle{
+	font-size: 1em;
+    color: gray;
+}
+.content{
+	margin-top: 1em;
+	font-size: 0.9em;
+	text-align: left;
+    color:black;
+}
+
+/*Media Query
+@media(min-width: 30rem){
+	.container {
+		/*Flexbox
+		display: inline-flex;
+		/*flex-wrap: wrap;
+	}
+	.block {
+		margin-left: 1em;
+		margin-right: 1em;
+		min-height: 200px;
+	}
+}
+*/
