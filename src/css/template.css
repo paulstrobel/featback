@@ -80,7 +80,9 @@ color: white;
     background-size: cover;
 }
 
-
+.navbar-brand.active{
+    color: white;
+}
 
 
 /*** EXTERNE**/

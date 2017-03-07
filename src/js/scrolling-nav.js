@@ -15,11 +15,17 @@ $(function() {
             scrollTop: $($anchor.attr('href')).offset().top
         }, 1500, 'easeInOutExpo');
         event.preventDefault();
-        $('.page-scroll').removeClass('active');
 
         //TODO fix this
-        $($anchor.attr('href')).addClass('active');
 
-        //$('.page-scroll').addClass('active');
+        // $(".active").removeClass("active");
+        //$(this).addClass("active");
+
+    
+        $('.page-scroll').removeClass('active');
+
+        // $($anchor.attr('href')).addClass('active');
+
+        $('.page-scroll').addClass('active');
     });
 });
