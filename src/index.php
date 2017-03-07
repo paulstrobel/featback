@@ -145,7 +145,7 @@ echo "
         <div class=\"content\">
             Zusatzinfos
         </div>
-        <div class=\"reference\"><a href=\"#\">mehr Informationen</a></div>
+        <div class=\"reference\"><a href=\"#\">mehr Information</a></div>
     </div>
     <div class=\"block\">
         <div class=\"title\">" . $parsed_json_string[4]["name"] . "</div>

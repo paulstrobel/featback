@@ -48,40 +48,42 @@
 
     <section id="menue" class="menue-section">
         <h1>Speisekarte</h1>
-        <h2>Wähle ein Menü aus um mehr zu erfahren...</h2>
 
-        <!-- -->
+<h2>
+$imensa["name"]
+</h2>
+
+
+Heute offen ($today)<br/>
+
+<!--Anfang Php-->
 <span class="container">
-	<div class="block">
-		<div class="title">Menü 1</div>
-		<div class="smalltitle">Name des Essens</div>
-		<div class="content">
-			Zusatzinfos
-		</div>
-		<div class="reference"><a href="#">mehr Informationen</a></div>
-	</div>
-	<div class="block">
-		<div class="title">Menü 2</div>
-		<div class="smalltitle">Name des Essens</div>
-		<div class="content">
-			Zusatzinfos
-		</div>
-		<div class="reference"><a href="#">mehr Informationen</a></div>
-	</div>
-	<div class="block">
-		<div class="title">Menü 3</div>
-		<div class="smalltitle">Name des Essens</div>
-		<div class="content">
-			Zusatzinfos
-		</div>
-		<div class="reference"><a href="#">mehr Informationen</a></div>
-	</div>
+    <div class="block">
+        <div class="title">" . $parsed_json_string[0]["name"] . "</div>
+        <div class="smalltitle"></div>
+        <div class="content">
+            Zusatzinfos
+        </div>
+        <div class="reference"><a href="#">mehr Information</a></div>
+    </div>
+    <div class="block">
+        <div class="title">" . $parsed_json_string[4]["name"] . "</div>
+        <div class="smalltitle"></div>
+        <div class="content">
+            Zusatzinfos
+        </div>
+        <div class="reference"><a href="#">mehr Informationen</a></div>
+    </div>
+    <div class="block">
+        <div class="title">" . $parsed_json_string[6]["name"] . "</div>
+        <div class="smalltitle"></div>
+        <div class="content">
+            Zusatzinfos
+        </div>
+        <div class="reference"><a href="#">mehr Informationen</a></div>
+    </div>
 </span>
-
-
-
-        <!-- -->
-
+<!--Ende Php-->
 
     </section>
 
@@ -100,5 +102,4 @@
     <script src="js/scrolling-nav.js"></script>
     <script src="js/jquery.easing.1.3.js"></script>
 </body>
-
 </html>
