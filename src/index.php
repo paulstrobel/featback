@@ -55,9 +55,9 @@ mysqli_select_db($mysqli, DB_NAME);
 
     <section id="menue" class="menue-section">
         <h1>Speisekarte</h1>
-        <h2>Wähle ein Menü aus um mehr zu erfahren...</h2>
 
 <?php
+
 
 /* === Daten ===*/
 $today = date('Y-m-d');
@@ -81,22 +81,6 @@ $mensa_information = "http://openmensa.org/api/v2/canteens/" . $mensa . ".json/"
 $mensa_information_json_string = get_data($mensa_information);
 $imensa = json_decode($mensa_information_json_string, true);
 
-$status = true;
-if($weekday > 5){
-    $status = false;
-}
-
-echo "<b>Ausgew&auml;hlte Mensa:</b>";
-echo "<br/><h3>";
-print_r($imensa["name"]);
-echo "</h3>";
-echo "Heute ";
-if($status){
-    echo "offen";
-}else{
-    echo "geschlossen";
-}
-echo "<hr/>";
 
 /*Datum des Speiseplans auswählen*/
 $date_meals = $today;
@@ -105,6 +89,24 @@ $date_meals = $today;
 $meals_on_a_specific_date = "http://openmensa.org/api/v2/canteens/" . $mensa . "/days/" . $date_meals . "/meals.json/";
 $json_string = get_data($meals_on_a_specific_date);
 $parsed_json_string = json_decode($json_string, true);
+
+echo "<h2>";
+print_r($imensa["name"]);
+echo "</h2>";
+
+$status = true;
+if($weekday > 5){
+    $status = false;
+}
+
+
+echo "Heute ";
+if($status){
+    echo "offen ";
+}else{
+    echo "geschlossen ";
+}
+echo "(" . $today . ")<br/>";
 
 /*Mahlzeiten anzeigen
 echo "<b>Essen 1:</b>";
@@ -135,7 +137,7 @@ echo "Alle Mahlzeiten eines Tages (JSON-String): <br/><br/>";
 print_r($parsed_json_string);
 echo "<hr/>";*/
 
-echo $today . "
+echo "
 <span class=\"container\">
     <div class=\"block\">
         <div class=\"title\">" . $parsed_json_string[0]["name"] . "</div>
