@@ -5,17 +5,17 @@ html, body {
 
 #erstesEssen{
     float: left;
-    width: 30%;
+    width: 450px;
 }
 
 #zweitesEssen{
     float: left;
-    width: 30%;
+    width: 450px;
 }
 
 #drittesEssen{
     float: left;
-    width: 30%;
+    width: 450px;
 }
 
 .navbar {
