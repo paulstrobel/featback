@@ -18,14 +18,15 @@ $(function() {
 
         //TODO fix this
 
-        // $(".active").removeClass("active");
+        //$(".active").removeClass("active");
         //$(this).addClass("active");
 
     
         $('.page-scroll').removeClass('active');
 
-        // $($anchor.attr('href')).addClass('active');
+        $(anchor.attr(this)).addClass('active');
 
-        $('.page-scroll').addClass('active');
+
+        // $('.page-scroll').addClass('active');
     });
 });
