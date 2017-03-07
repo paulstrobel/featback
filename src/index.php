@@ -1,31 +1,67 @@
 <?php
-
+/*Diesen Abschnitt später löschen*/
 require_once('../wp-config.php');
 $mysqli = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD);
 mysqli_select_db($mysqli, DB_NAME);
-echo "<html><head><title>featback</title>";
-echo "  <link rel=\"stylesheet\" type=\"text/css\" href=\"styles.css\">
-        <script type=\"text/javascript\" src=\"client-side-controller.js \"></script>
-        </head><body>";
-echo "  <center><div class=\"container\">
-        <div class=\"header\"><h1>f-eat-back</h1>
-        <h2>Isst du noch oder geniesst du schon?</h2></div>";
+
+?>
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <title>f-eat-back - Die Mensa-Bewertungs Plattform</title>
+
+        <link href='http://fonts.googleapis.com/css?family=Oswald|Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
+
+        <!-- Bootstrap -->
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/template.css" rel="stylesheet">
+
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
+
+    <body id="page-top" data-spy="scroll" data-target="navbar-fixed-top">
+
+    <nav class="navbar navbar-default navbar-fixed-top" > <!--role="navigation"-->
+        <div class="container">
+            <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar navbar-collapse" aria-expanded="false" aria-controls="navbar">
+            <!--button type="button" class="navbar-toggle" data-toggle="collapse" data-target="navbar-collapse"-->
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">f-eat-back</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li class="active page-scroll"><a href="#menue">Menüs</a></li>
+                <li class="page-scroll"><a href="#about">Über f-eat-back</a></li>
+                <li class="page-scroll"><a href="#contact">Kontakt</a></li>
+            </ul>
+            </div><!--/.nav-collapse -->
+        </div>
+    </nav>
+
+    <section id="menue" class="menue-section">
+        <h1>Speisekarte</h1>
+        <h2>Wähle ein Menü aus um mehr zu erfahren...</h2>
+
+<?php
 
 /* === Daten ===*/
 $today = date('Y-m-d');
 $weekday = date('N');
-
-/* ========================Aktuelles Speiseplandatum==================== */
-echo "  
-        <div class=\"fastinsight\">";/*
-$query = "SELECT Count(*) as Anzahl FROM wp_users";
-if ($result = $mysqli->query($query)) {
-    $row = $result->fetch_row();*/
-    echo "<h3>Essen am " . $today /* . $row[0] . */ . "</h3>";
-    /*
-    $result->free();
-}*/
-echo "</div><div class=\"content\">";
 
 /* gets the data from a URL */
 function get_data($url) {
@@ -38,32 +74,6 @@ function get_data($url) {
     curl_close($ch);
     return $data;
 }
-
-
-/*File_get_contents wird vermutlich von meinem HOST geblockt*/
-/*$json_string = file_get_contents('http://openmensa.org/api/v2/canteens/33/days/2017-03-02/meals.json/');
-*/
-
-echo "<form id=\"form-mission\" method=\"post\" action=\"index.php\">
-    <ul>
-    <li>
-        <select name=\"membre\">
-            <option value=0> Montag </option>
-            <option value=1> Dienstag </option>
-            <option value=2> Mittwoch </option>
-            <option value=3> Donnerstag </option>
-            <option value=4> Freitag </option>
-        </select>
-    </li>
-
-    <!--Content-->
-    <li><textarea name=\"texte\" id=\"text_area\" ></textarea></li>
-
-    <!-- Submit -->
-    <li class=\"except\"><input type=\"submit\" value=\"Submit\" /></li>
-    </ul>
-
-</form>";
 
 /*Daten für Mensa ziehen*/
 $mensa = 33; /*33 = DHBW Karlsruhe*/
@@ -88,12 +98,6 @@ if($status){
 }
 echo "<hr/>";
 
-/*Datum ziehen und Tage addieren / substrahieren */
-/*$today = getdate();
-print_r($today);
-$today = $today[year] . "-" . $today[mon] . "-" . $today[mday];
-echo("<br/>today: " . $today . "<br/>");*/
-
 /*Datum des Speiseplans auswählen*/
 $date_meals = $today;
 
@@ -102,7 +106,7 @@ $meals_on_a_specific_date = "http://openmensa.org/api/v2/canteens/" . $mensa . "
 $json_string = get_data($meals_on_a_specific_date);
 $parsed_json_string = json_decode($json_string, true);
 
-/*Mahlzeiten anzeigen*/
+/*Mahlzeiten anzeigen
 echo "<b>Essen 1:</b>";
 echo "<br/><h3>";
 print_r($parsed_json_string[0]["name"]);
@@ -129,7 +133,90 @@ echo "<br/><br/><hr/>";
 
 echo "Alle Mahlzeiten eines Tages (JSON-String): <br/><br/>";
 print_r($parsed_json_string);
-echo "<hr/>";
+echo "<hr/>";*/
+
+echo $today . "
+<span class=\"container\">
+    <div class=\"block\">
+        <div class=\"title\">" . $parsed_json_string[0]["name"] . "</div>
+        <div class=\"smalltitle\"></div>
+        <div class=\"content\">
+            Zusatzinfos
+        </div>
+        <div class=\"reference\"><a href=\"#\">mehr Informationen</a></div>
+    </div>
+    <div class=\"block\">
+        <div class=\"title\">" . $parsed_json_string[4]["name"] . "</div>
+        <div class=\"smalltitle\"></div>
+        <div class=\"content\">
+            Zusatzinfos
+        </div>
+        <div class=\"reference\"><a href=\"#\">mehr Informationen</a></div>
+    </div>
+    <div class=\"block\">
+        <div class=\"title\">" . $parsed_json_string[6]["name"] . "</div>
+        <div class=\"smalltitle\"></div>
+        <div class=\"content\">
+            Zusatzinfos
+        </div>
+        <div class=\"reference\"><a href=\"#\">mehr Informationen</a></div>
+    </div>
+</span>
+
+";
+?>
+
+    </section>
+
+    <section id="about" class="about-section">
+    ...und das die 2. ...
+    </section>
+    
+    <section id="contact" class="contact-section">
+    ... die 3. nicht vergessen
+    </section>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/scrolling-nav.js"></script>
+    <script src="js/jquery.easing.1.3.js"></script>
+</body>
+</html>
+
+<?
+
+
+
+/*echo "<form id=\"form-mission\" method=\"post\" action=\"index.php\">
+    <ul>
+    <li>
+        <select name=\"membre\">
+            <option value=0> Montag </option>
+            <option value=1> Dienstag </option>
+            <option value=2> Mittwoch </option>
+            <option value=3> Donnerstag </option>
+            <option value=4> Freitag </option>
+        </select>
+    </li>
+
+    <!--Content-->
+    <li><textarea name=\"texte\" id=\"text_area\" ></textarea></li>
+
+    <!-- Submit -->
+    <li class=\"except\"><input type=\"submit\" value=\"Submit\" /></li>
+    </ul>
+
+</form>";*/
+
+
+
+/*Datum ziehen und Tage addieren / substrahieren */
+/*$today = getdate();
+print_r($today);
+$today = $today[year] . "-" . $today[mon] . "-" . $today[mday];
+echo("<br/>today: " . $today . "<br/>");*/
 
 /*
 $json_string2 = file_get_contents('meals.json');
@@ -144,38 +231,6 @@ $parsed_json_string3 = json_decode($json_string3, true);
 echo "JSON als PHP Variable:<br/><br/>";
 print_r($parsed_json_string3[0]);
 */
-
-echo "</div><div class=\"content\">";
-
-/* ========================Speißen Tabelle==================== */
-echo "<h3 id=\"allemitglieder\">Spei&szlig;en Tabelle:</h3>";
-$query = "SELECT P.user_id as ID, P.value as Name, S.value as Status, G.value as Geburtsdatum, U.user_email as Email, U.user_registered as Registrierungsdatum 
-FROM wp_bp_xprofile_data as P, wp_bp_xprofile_data as S, wp_bp_xprofile_data as G, wp_users as U 
-WHERE P.field_id = 1 
-AND S.field_id = 13
-AND G.field_id = 6 
-AND P.user_id = U.ID 
-AND S.user_id = U.ID 
-AND G.user_id = U.ID
-ORDER BY U.user_registered DESC";
-if ($result = $mysqli->query($query)) {
-    /* fetch associative array */
-    echo "<table>";
-    echo "<tr id=\"tableheader\"><th>ID</th><th>Name</th><th>Status</th><th>E-Mail Adresse</th><th>Registriert am</th></tr>";
-    while ($row = $result->fetch_assoc()) {
-        echo "<tr><td>" . $row["ID"] . "</td><td>" . $row["Name"] . "</td><td>" . $row["Status"] . "</td><td>" . $row["Email"] . "</td><td>" . $row["Registrierungsdatum"] . "</td></tr>";
-    }
-    echo "</table>";
-    /* free result set */
-    $result->free();
-}
-
-/* ============================================ */
-echo "  </div>
-        <div class=\"footer\">&copy; 2017 featback</div>
-        </div></center>
-        </body>
-        </html>";
 
 /* close connection */
 $mysqli->close();
