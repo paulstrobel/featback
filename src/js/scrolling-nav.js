@@ -1,9 +1,9 @@
 //jQuery to collapse the navbar on scoll
 $(window).scroll(function() {
     if($(".navbar").offset().top > 50) {
-        $(".navbar-fixed-top").addClass("top-nav-collapse active");
+        $(".navbar-fixed-top").addClass("top-nav-collapse");
     } else {
-        $(".navbar-fixed-top").removeClass("top-navbar-collapse active");
+        $(".navbar-fixed-top").removeClass("top-navbar-collapse");
     }
 });
 
@@ -15,5 +15,7 @@ $(function() {
             scrollTop: $($anchor.attr('href')).offset().top
         }, 1500, 'easeInOutExpo');
         event.preventDefault();
+        $('.page-scroll').removeClass('active');
+        $('.page-scroll').addClass('active');
     });
 });
