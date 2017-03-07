@@ -16,6 +16,10 @@ $(function() {
         }, 1500, 'easeInOutExpo');
         event.preventDefault();
         $('.page-scroll').removeClass('active');
-        $('.page-scroll').addClass('active');
+
+        //TODO fix this
+        $($anchor.attr('href')).addClass('active');
+
+        //$('.page-scroll').addClass('active');
     });
 });
