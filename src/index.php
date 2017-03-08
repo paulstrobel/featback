@@ -1,6 +1,31 @@
 <?php
 /*Diesen Abschnitt später löschen*/
-require_once('../wp-config.php');
+/*require_once('../wp-config.php');*/
+
+/*$DB_HOST = wp139.webpack.hosteurope.de;
+$DB_NAME = db12375823-featback;
+$DB_USER = db12375823-team;
+$DB_PASSWORD = featback;*/
+
+// ** MySQL settings - You can get this info from your web host ** //
+/** The name of the database for WordPress */
+define('DB_NAME', 'db12375823-featback');
+
+/** MySQL database username */
+define('DB_USER', 'db12375823-team');
+
+/** MySQL database password */
+define('DB_PASSWORD', 'featback');
+
+/** MySQL hostname */
+define('DB_HOST', 'wp139.webpack.hosteurope.de');
+
+/** Database Charset to use in creating database tables. */
+define('DB_CHARSET', 'utf8');
+
+/** The Database Collate type. Don't change this if in doubt. */
+define('DB_COLLATE', '');
+
 $mysqli = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD);
 mysqli_select_db($mysqli, DB_NAME);
 
@@ -108,20 +133,20 @@ if($status){
 }
 echo "(" . $today . ")<br/>";
 
+
+
+
+
+/* ========================Mahlzeiten anzeigen==================== */
+
+
 $wahlessen = [
     0 => "Wahlessen 1",
     1 => "Wahlessen 2",
     2 => "Wahlessen 3",
 ];
 
-/*echo $mahlzeiten[0];*/
 
-
-/*echo $parsed_json_string[$i]["category"];*/
-
-echo "<br/>";
-
-$j=0;
 for ($i = 0; $i <= 2; $i++) {
     $j=0;
     foreach($parsed_json_string as $item) {  
@@ -132,9 +157,8 @@ for ($i = 0; $i <= 2; $i++) {
     }
 }
 
-
 echo "<span class=\"container\">";
-
+/* ========================Mahlzeit Name und weitere Informationen==================== */
     for ($a = 0; $a <= count($mahlzeit)-1; $a++) {
         echo "
         <div class=\"block\">
@@ -144,41 +168,24 @@ echo "<span class=\"container\">";
                 for ($b = 1; $b <= count($mahlzeit[$a])-1; $b++) {
                     echo $mahlzeit[$a][$b]["name"] . "<br/>";
                 }
+            echo "<hr/>";
+/* ========================Bewertung abrufen==================== */
+            $mahlzeit_id = $mahlzeit[$a][0]["id"]; 
+            $query = "SELECT Bewertung, Kommentar FROM Essensbewertung WHERE ID = $mahlzeit_id";
+            if ($result = $mysqli->query($query)) {
+                $row = $result->fetch_row();
+                echo "Bewertung: " . $row[0] . "<br/>";
+                echo "Kommentar: " . $row[1] . "<br/>";
+                /* free result set */
+                $result->free();
+            }
+
             echo "
             </div>
             <div class=\"reference\"><a href=\"#\">Bewerten</a></div>
         </div>";
     }
 
-
-/*echo "
-    <div class=\"block\">
-        <div class=\"title\">" . $mahlzeit[0][0]["name"] . "</div>
-        <div class=\"smalltitle\"></div>
-        <div class=\"content\">
-            " . $mahlzeit[0][0]["prices"]["students"] . "€
-        </div>
-        <div class=\"reference\"><a href=\"#\">mehr Informationen</a></div>
-    </div>
-    <div class=\"block\">
-        <div class=\"title\">" . $mahlzeit[1][0]["name"] . "</div>
-        <div class=\"smalltitle\"></div>
-        <div class=\"content\">
-            " . $mahlzeit[1][0]["prices"]["students"] . "€
-        </div>
-        <div class=\"reference\"><a href=\"#\">mehr Informationen</a></div>
-    </div>
-    <div class=\"block\">
-        <div class=\"title\">" . $mahlzeit[2][0]["name"] . "</div>
-        <div class=\"smalltitle\"></div>
-        <div class=\"content\">
-            " . $mahlzeit[2][0]["prices"]["students"] . "€
-        </div>
-        <div class=\"reference\"><a href=\"#\">mehr Informationen</a></div>
-    </div>
-</span>
-
-";*/
 ?>
 
     </section>
@@ -202,8 +209,6 @@ echo "<span class=\"container\">";
 
 <?
 
-
-
 /*echo "<form id=\"form-mission\" method=\"post\" action=\"index.php\">
     <ul>
     <li>
@@ -224,28 +229,6 @@ echo "<span class=\"container\">";
     </ul>
 
 </form>";*/
-
-
-
-/*Datum ziehen und Tage addieren / substrahieren */
-/*$today = getdate();
-print_r($today);
-$today = $today[year] . "-" . $today[mon] . "-" . $today[mday];
-echo("<br/>today: " . $today . "<br/>");*/
-
-/*
-$json_string2 = file_get_contents('meals.json');
-$parsed_json_string2 = json_decode($json_string2, true);
-echo "JSON als lokale Datei:<br/><br/>";
-print_r($parsed_json_string2[0]);
-
-echo "<hr/>";
-
-$json_string3 = "[{\"id\":2453835,\"name\":\"Penne Arrabiata Reibekäse Beilagensalat[1,2,3,Ei,Gl,ML,Se,Sn,So]\",\"category\":\"Wahlessen 1\",\"prices\":{\"students\":2.6,\"employees\":3.2,\"pupils\":2.95,\"others\":3.9},\"notes\":[]},{\"id\":2453836,\"name\":\"Verschiedene Dessert[1,ML]\",\"category\":\"Wahlessen 1\",\"prices\":{\"students\":0.95,\"employees\":0.95,\"pupils\":0.95,\"others\":1.2},\"notes\":[]},{\"id\":2404924,\"name\":\"Teigwaren[Gl]\",\"category\":\"Wahlessen 1\",\"prices\":{\"students\":0.75,\"employees\":0.75,\"pupils\":0.75,\"others\":0.95},\"notes\":[]},{\"id\":2404925,\"name\":\"Tagessuppe\",\"category\":\"Wahlessen 1\",\"prices\":{\"students\":0.45,\"employees\":0.45,\"pupils\":0.45,\"others\":0.65},\"notes\":[]},{\"id\":2453837,\"name\":\"Gebratene Hähnchenkeule Ketchup[Sn]\",\"category\":\"Wahlessen 2\",\"prices\":{\"students\":2.1,\"employees\":3.1,\"pupils\":2.45,\"others\":4.6},\"notes\":[]},{\"id\":2453838,\"name\":\"Pommes\",\"category\":\"Wahlessen 2\",\"prices\":{\"students\":0.95,\"employees\":0.95,\"pupils\":0.95,\"others\":1.2},\"notes\":[]},{\"id\":2404928,\"name\":\"2 Eieromlette Rahmspinat Kartoffeln[1,Ei,Gl,ML]\",\"category\":\"Wahlessen 3\",\"prices\":{\"students\":2.6,\"employees\":3.2,\"pupils\":2.95,\"others\":3.9},\"notes\":[]},{\"id\":2404929,\"name\":\"Salatbuffet überwiegend vegetarisch[1,3,4,7,8,ML,Sf]\",\"category\":\"Wahlessen 3\",\"prices\":{\"students\":0.83,\"employees\":1.14,\"pupils\":0.96,\"others\":1.66},\"notes\":[]},{\"id\":2404930,\"name\":\"Beilagensalat[Ei,Se,Sn,So]\",\"category\":\"Wahlessen 3\",\"prices\":{\"students\":0.8,\"employees\":0.8,\"pupils\":0.8,\"others\":1.0},\"notes\":[]},{\"id\":2404931,\"name\":\"Mischgemüse[1]\",\"category\":\"Wahlessen 3\",\"prices\":{\"students\":0.8,\"employees\":0.8,\"pupils\":0.8,\"others\":1.0},\"notes\":[]}]";
-$parsed_json_string3 = json_decode($json_string3, true);
-echo "JSON als PHP Variable:<br/><br/>";
-print_r($parsed_json_string3[0]);
-*/
 
 /* close connection */
 $mysqli->close();
