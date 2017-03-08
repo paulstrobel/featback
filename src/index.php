@@ -146,7 +146,7 @@ echo "<span class=\"container\">";
                 }
             echo "
             </div>
-            <div class=\"reference\"><a href=\"#\">mehr Informationen</a></div>
+            <div class=\"reference\"><a href=\"#\">Bewerten</a></div>
         </div>";
     }
 
