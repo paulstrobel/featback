@@ -96,7 +96,7 @@ color: white;
 }
 
 .block{
-	width: 250px;
+	width: 300px;
     float: left;
 	background:white;
 	position: relative;
@@ -106,7 +106,7 @@ color: white;
 }
 
 .block:hover{
-    background-color: grey;
+    margin-top: 8px;
 }
 
 
@@ -114,8 +114,9 @@ color: white;
 /*.block > div {display: inline-block;}*/
 .title{
 	font-size: 1.5em;
-	color: darkblue;
+	color: white;
 	margin-bottom: 0.4em;
+    background-color: forestgreen;
 }
 .smalltitle{
 	font-size: 1em;
@@ -126,6 +127,7 @@ color: white;
 	font-size: 0.9em;
 	text-align: left;
     color:black;
+    padding: 20px;
 }
 
 /*Media Query
