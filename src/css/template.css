@@ -89,20 +89,24 @@ color: white;
 
 
 .container{
+    width: 100%;
 	text-align: center;
-
-		flex-wrap: wrap;
+    margin: 0 auto;
+	flex-wrap: wrap;
 }
 
 .block{
-	width: 400px;
+	width: 250px;
     float: left;
 	background:white;
 	position: relative;
     text-shadow: none;
-    margin-left: 1em;
-    margin-right: 1em;
-	min-height: 200px;
+    margin: 1em;
+	min-height: 300px;
+}
+
+.block:hover{
+    background-color: grey;
 }
 
 
