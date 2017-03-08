@@ -108,64 +108,77 @@ if($status){
 }
 echo "(" . $today . ")<br/>";
 
-/*Mahlzeiten anzeigen
-echo "<b>Essen 1:</b>";
-echo "<br/><h3>";
-print_r($parsed_json_string[0]["name"]);
-echo "</h3>";
-echo "<b>Preis für Studenten:</b> ";
-print_r($parsed_json_string[0]["prices"]["students"]);
-echo "<br/><br/><hr/>";
+$wahlessen = [
+    0 => "Wahlessen 1",
+    1 => "Wahlessen 2",
+    2 => "Wahlessen 3",
+];
 
-echo "<b>Essen 2:</b>";
-echo "<br/><h3>";
-print_r($parsed_json_string[4]["name"]);
-echo "</h3>";
-echo "<b>Preis für Studenten:</b> ";
-print_r($parsed_json_string[4]["prices"]["students"]);
-echo "<br/><br/><hr/>";
+/*echo $mahlzeiten[0];*/
 
-echo "<b>Essen 3:</b>";
-echo "<br/><h3>";
-print_r($parsed_json_string[6]["name"]);
-echo "</h3>";
-echo "<b>Preis für Studenten:</b> ";
-print_r($parsed_json_string[6]["prices"]["students"]);
-echo "<br/><br/><hr/>";
 
-echo "Alle Mahlzeiten eines Tages (JSON-String): <br/><br/>";
-print_r($parsed_json_string);
-echo "<hr/>";*/
+/*echo $parsed_json_string[$i]["category"];*/
 
-echo "
-<span class=\"container\">
+echo "<br/>";
+
+$j=0;
+for ($i = 0; $i <= 2; $i++) {
+    $j=0;
+    foreach($parsed_json_string as $item) {  
+         if($item["category"] == $wahlessen[$i]){
+            $mahlzeit[$i][$j] = $item;
+            $j = $j + 1;
+        }
+    }
+}
+
+
+echo "<span class=\"container\">";
+
+    for ($a = 0; $a <= count($mahlzeit)-1; $a++) {
+        echo "
+        <div class=\"block\">
+            <div class=\"title\">" . $mahlzeit[$a][0]["name"] . "</div>
+            <div class=\"smalltitle\"></div>
+            <div class=\"content\">";
+                for ($b = 1; $b <= count($mahlzeit[$a])-1; $b++) {
+                    echo $mahlzeit[$a][$b]["name"] . "<br/>";
+                }
+            echo "
+            </div>
+            <div class=\"reference\"><a href=\"#\">mehr Informationen</a></div>
+        </div>";
+    }
+
+
+/*echo "
     <div class=\"block\">
-        <div class=\"title\">" . $parsed_json_string[0]["name"] . "</div>
+        <div class=\"title\">" . $mahlzeit[0][0]["name"] . "</div>
         <div class=\"smalltitle\"></div>
         <div class=\"content\">
-            Zusatzinfos
-        </div>
-        <div class=\"reference\"><a href=\"#\">mehr Information</a></div>
-    </div>
-    <div class=\"block\">
-        <div class=\"title\">" . $parsed_json_string[4]["name"] . "</div>
-        <div class=\"smalltitle\"></div>
-        <div class=\"content\">
-            Zusatzinfos
+            " . $mahlzeit[0][0]["prices"]["students"] . "€
         </div>
         <div class=\"reference\"><a href=\"#\">mehr Informationen</a></div>
     </div>
     <div class=\"block\">
-        <div class=\"title\">" . $parsed_json_string[6]["name"] . "</div>
+        <div class=\"title\">" . $mahlzeit[1][0]["name"] . "</div>
         <div class=\"smalltitle\"></div>
         <div class=\"content\">
-            Zusatzinfos
+            " . $mahlzeit[1][0]["prices"]["students"] . "€
+        </div>
+        <div class=\"reference\"><a href=\"#\">mehr Informationen</a></div>
+    </div>
+    <div class=\"block\">
+        <div class=\"title\">" . $mahlzeit[2][0]["name"] . "</div>
+        <div class=\"smalltitle\"></div>
+        <div class=\"content\">
+            " . $mahlzeit[2][0]["prices"]["students"] . "€
         </div>
         <div class=\"reference\"><a href=\"#\">mehr Informationen</a></div>
     </div>
 </span>
 
-";
+";*/
 ?>
 
     </section>
