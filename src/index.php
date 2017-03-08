@@ -1,31 +1,8 @@
 <?php
-/*Diesen Abschnitt später löschen*/
-/*require_once('../wp-config.php');*/
 
-/*$DB_HOST = wp139.webpack.hosteurope.de;
-$DB_NAME = db12375823-featback;
-$DB_USER = db12375823-team;
-$DB_PASSWORD = featback;*/
+include 'dbconnection.php';
 
-// ** MySQL settings - You can get this info from your web host ** //
-/** The name of the database for WordPress */
-define('DB_NAME', 'db12375823-featback');
-
-/** MySQL database username */
-define('DB_USER', 'db12375823-team');
-
-/** MySQL database password */
-define('DB_PASSWORD', 'featback');
-
-/** MySQL hostname */
-define('DB_HOST', 'wp139.webpack.hosteurope.de');
-
-/** Database Charset to use in creating database tables. */
-define('DB_CHARSET', 'utf8');
-
-/** The Database Collate type. Don't change this if in doubt. */
-define('DB_COLLATE', '');
-
+/*Verbindung zu unserer Datenbank herstellen*/
 $mysqli = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD);
 mysqli_select_db($mysqli, DB_NAME);
 
@@ -134,9 +111,6 @@ if($status){
 echo "(" . $today . ")<br/>";
 
 
-
-
-
 /* ========================Mahlzeiten anzeigen==================== */
 
 
@@ -158,7 +132,7 @@ for ($i = 0; $i <= 2; $i++) {
 }
 
 echo "<span class=\"container\">";
-/* ========================Mahlzeit Name und weitere Informationen==================== */
+/* ========================Mahlzeit-Name und weitere Informationen==================== */
     for ($a = 0; $a <= count($mahlzeit)-1; $a++) {
         echo "
         <div class=\"block\">
@@ -169,7 +143,7 @@ echo "<span class=\"container\">";
                     echo $mahlzeit[$a][$b]["name"] . "<br/>";
                 }
             echo "<hr/>";
-/* ========================Bewertung abrufen==================== */
+/* ========================Bisherige Bewertungen abrufen==================== */
             $mahlzeit_id = $mahlzeit[$a][0]["id"]; 
             $query = "SELECT Bewertung, Kommentar FROM Essensbewertung WHERE ID = $mahlzeit_id";
             if ($result = $mysqli->query($query)) {
@@ -179,7 +153,16 @@ echo "<span class=\"container\">";
                 /* free result set */
                 $result->free();
             }
-
+/* ========================Selbst Bewertung abgeben==================== */
+            $bewertung = 4;
+            $kommentar = 'gute_Alternative_zu_Fleisch';
+            $ip_user = '462231281';
+            $query = "INSERT INTO Essensbewertung(ID, Bewertung, Kommentar, IP) VALUES ('$mahlzeit_id','$bewertung','$kommentar','$ip_user')";
+            if ($mysqli->query($query) === TRUE) {
+                echo "New record created successfully";
+            } else {
+                echo "Error: " . $sql . "<br>" . $mysqli->error;
+            }
             echo "
             </div>
             <div class=\"reference\"><a href=\"#\">Bewerten</a></div>
