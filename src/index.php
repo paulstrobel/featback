@@ -143,29 +143,72 @@ echo "<span class=\"container\">";
                     echo $mahlzeit[$a][$b]["name"] . "<br/>";
                 }
             echo "<hr/>";
-/* ========================Bisherige Bewertungen abrufen==================== */
+/* ========================Durchschnittliche Bewertung abrufen und berechnen==================== */
             $mahlzeit_id = $mahlzeit[$a][0]["id"]; 
-            $query = "SELECT Bewertung, Kommentar FROM Essensbewertung WHERE ID = $mahlzeit_id";
+            $query = "SELECT avg(Bewertung) FROM Essensbewertung WHERE MahlzeitID = $mahlzeit_id";
             if ($result = $mysqli->query($query)) {
                 $row = $result->fetch_row();
-                echo "Bewertung: " . $row[0] . "<br/>";
-                echo "Kommentar: " . $row[1] . "<br/>";
+                echo "Durchschnittliche Bewertung: " . $row[0] . "<br/>";
                 /* free result set */
                 $result->free();
             }
 /* ========================Selbst Bewertung abgeben==================== */
+            echo "
+            <hr/>
+            Essen bewerten:<br/>
+            <form method=\"post\" action=\"bewertung.php\">
+                <input type=\"radio\" name=\"bewertung\" value=\"1\">1</input>
+                <input type=\"radio\" name=\"bewertung\" value=\"2\">2</input>
+                <input type=\"radio\" name=\"bewertung\" value=\"3\">3</input>
+                <input type=\"radio\" name=\"bewertung\" value=\"4\">4</input>
+                <input type=\"radio\" name=\"bewertung\" value=\"5\">5</input><br/>
+                Kommentar<br/>
+                <input type=\"text\" name=\"kommentar\"></input><br/><br/>
+                <input type=\"hidden\" name=\"mahlzeit_id\" value=\"" . $mahlzeit_id . "\">
+                <input type=\"submit\" value=\"Bewerten\">
+            </form>
+            ";
+
+
+            /* ===================Alle bisherigen Bewertungen anzeigen========================= */
+            echo "<hr/>Alle Bewertungen:<br/>";
+            $query = "SELECT Bewertung, Kommentar FROM Essensbewertung WHERE MahlzeitID = $mahlzeit_id";
+            if ($result = $mysqli->query($query)) {
+                /* fetch associative array */
+                echo "<table>";
+                echo "<tr id=\"tableheader\"><th>Bewertung &nbsp;&nbsp;</th><th>Kommentar</th></tr>";
+                while ($row = $result->fetch_assoc()) {
+                    echo "<tr><td>" . $row["Bewertung"] . "</td><td>" . $row["Kommentar"] . "</td></tr>";
+                }
+                echo "</table>";
+                /* free result set */
+                $result->free();
+            }
+            // Escape user inputs for security
+            /*$bewertung = mysqli_real_escape_string($mysqli, $_REQUEST['bewertung']);
+            $kommentar = mysqli_real_escape_string($mysqli, $_REQUEST['kommentar']);
+            $bewertungID = rand(pow(10, 3), pow(10, 4)-1);
+            $ip_user = '46.223.128.1';
+            $query = "INSERT INTO Essensbewertung(ID, MahlzeitID, Bewertung, Kommentar, IP) VALUES ('$bewertungID','$mahlzeit_id','$bewertung','$kommentar','$ip_user')";
+            if(mysqli_query($mysqli, $query)){
+                echo "Danke für deine Bewertung.";
+            } else{
+                echo "ERROR: Could not able to execute $sql. " . mysqli_error($mysqli);
+            }*/
+
+            /*
+            $bewertungID = rand(pow(10, 3), pow(10, 4)-1);
             $bewertung = 4;
             $kommentar = 'gute_Alternative_zu_Fleisch';
-            $ip_user = '462231281';
-            $query = "INSERT INTO Essensbewertung(ID, Bewertung, Kommentar, IP) VALUES ('$mahlzeit_id','$bewertung','$kommentar','$ip_user')";
+            $ip_user = '46.223.128.1';
+            $query = "INSERT INTO Essensbewertung(ID, MahlzeitID, Bewertung, Kommentar, IP) VALUES ('$bewertungID','$mahlzeit_id','$bewertung','$kommentar','$ip_user')";
             if ($mysqli->query($query) === TRUE) {
                 echo "New record created successfully";
             } else {
                 echo "Error: " . $sql . "<br>" . $mysqli->error;
-            }
+            }*/
             echo "
             </div>
-            <div class=\"reference\"><a href=\"#\">Bewerten</a></div>
         </div>";
     }
 
