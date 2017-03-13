@@ -1,8 +1,9 @@
 ﻿Der Technologie Stack, welche Programme und Frameworks werden verwendet:
 
 - Visual Studio Code zum Programmieren
-- Php Storm für Php Programmierung
-- Bootstrap als Framework
+- Sublime Text 2 - Backend-Programmierung
+- PhpStorm für Backend-Programmierung (lokaler Php Host)
+- Bootstrap als Frontend-Framework
 - Github Desktop zur Versionierungsverwaltung
 - Github online zur Versionierungsverwaltung
 
