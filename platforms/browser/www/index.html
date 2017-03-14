@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<!--
+    Copyright (c) 2012-2016 Adobe Systems Incorporated. All rights reserved.
+
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+    <title>InAppBrowserTest</title>
+	<link rel="stylesheet" type="text/css" href="css/index.css" />
+	<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css" />
+	
+	<script type="text/javascript">
+		/* vibrate phone */
+		function vibration(time) {
+		   time = time || 80;
+		   navigator.vibrate(time);
+		}
+		
+		var inAppBrowserRef; 
+		
+		function onDeviceReady() {
+
+			window.open = cordova.InAppBrowser.open;
+			
+			var options = "location=no,hidden=yes,zoom=no,clearsessioncache=no,clearcache=no"; // start in hidden mode
+			inAppBrowserRef = cordova.InAppBrowser.open('http://collex.education/', '_blank', options);
+			
+			inAppBrowserRef.addEventListener('loadstart', loadStartCallBack);
+			inAppBrowserRef.addEventListener('loadstop', loadStopCallBack);
+			inAppBrowserRef.addEventListener('loaderror', loadErrorCallBack);
+			inAppBrowserRef.addEventListener('exit', loadExitCallBack);
+
+		}
+		
+        document.addEventListener("deviceready", onDeviceReady, false);
+		
+		function loadStartCallBack(){
+			vibration(50);	// vibrate
+			
+			inAppBrowserRef.hide(); // hide browser for showing spinner
+			$('#status-message').text("loading please wait ...");
+			$('.loader').show();
+			var script = "$('body').addClass('loading');$('.loadingImg').fadeIn('fast');";  // show loading spinner
+			inAppBrowserRef.executeScript({ code: script }, executeScriptCallBack);
+			
+		//	SpinnerPlugin.activityStart("Loading", { dimBackground: true }); // start loader
+		}
+		
+		function loadStopCallBack(){
+			inAppBrowserRef.show(); // show browser after loading page
+			$('.loader').hide(); // hide loading spinner after loading page
+			var script = "$('.loadingImg').fadeOut('slow', function () {$('body').removeClass('loading');});";  // hide loading spinner
+			inAppBrowserRef.executeScript({ code: script }, executeScriptCallBack);
+			 
+		//	SpinnerPlugin.activityStop(); // stop loader
+		}
+		
+		function loadErrorCallBack(params){
+
+			$('#status-message').text("");
+			
+			var scriptErrorMesssage =
+			   "alert('Sorry we cannot open that page. Message from the server is : "
+			   + params.message + "');"
+			   
+			inAppBrowserRef.executeScript({ code: scriptErrorMesssage }, executeScriptCallBack);
+			
+			inAppBrowserRef.close();
+			
+			inAppBrowserRef = undefined;
+
+		}
+		
+		function executeScriptCallBack(params) { // error while executing the script
+		
+			if (params[0] == null) {
+			
+				$('#status-message').text(
+				   "Sorry we couldn't open that page. Message from the server is : '"
+				   + params.message + "'");
+			}
+		}
+		
+		function loadExitCallBack(){ 
+			vibration(140);	// haptic feedback
+			navigator.app.exitApp(); // close app
+		}
+		
+		// event for pressing the back button
+		document.addEventListener("backbutton", onBackKeyDown, false);
+		function onBackKeyDown(event) {
+			// your code for handling back button comes here
+			vibration(100);
+		}
+    </script>
+</head>
+<body>
+	<!-- shows that the page is still loading -->
+    <div class="loader"><i class="loader_html fa-spin"></i></div>
+	
+	<script type="text/javascript" charset="utf-8" src="js/jquery.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+</body>
+</html>
