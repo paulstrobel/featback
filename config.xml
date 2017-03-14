@@ -1,7 +1,7 @@
 <widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="collex.education" version="1.0.7">
   <name>Collex</name>
   <description>Collex Education - Erlebe deinen Traumberuf</description>
-  <author href="http://collex.education" email="info@collex.education">Paul Strobel</author>
+  <author href="http://paulstrobel.de/featback/" email="featback@paulstrobel.de">Paul Strobel</author>
   <content src="index.html"/>
   <preference name="DisallowOverscroll" value="true"/>
   <preference name="android-minSdkVersion" value="11" /> 
