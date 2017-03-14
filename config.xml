@@ -1,6 +1,6 @@
 <widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="collex.education" version="1.0.7">
-  <name>Collex</name>
-  <description>Collex Education - Erlebe deinen Traumberuf</description>
+  <name>F-eat-back</name>
+  <description>F-eat-back - Essensbewertung der Mensa der DHBW Karlsruhe</description>
   <author href="http://paulstrobel.de/featback/" email="featback@paulstrobel.de">Paul Strobel</author>
   <content src="index.html"/>
   <preference name="DisallowOverscroll" value="true"/>
