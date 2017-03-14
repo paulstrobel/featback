@@ -136,11 +136,15 @@ echo "<span class=\"container\">";
     for ($a = 0; $a <= count($mahlzeit)-1; $a++) {
         echo "
         <div class=\"block\">
-            <div class=\"title\">" . $mahlzeit[$a][0]["name"] . "</div>
+            <div class=\"title\">" . strstr($mahlzeit[$a][0]["name"], '[', true) . "</div>
             <div class=\"smalltitle\"></div>
             <div class=\"content\">";
                 for ($b = 1; $b <= count($mahlzeit[$a])-1; $b++) {
-                    echo $mahlzeit[$a][$b]["name"] . "<br/>";
+                    if (strpos($mahlzeit[$a][$b]["name"], '[') !== false) {
+                        echo strstr($mahlzeit[$a][$b]["name"], '[', true) . "<br/>";
+                    }else{
+                        echo $mahlzeit[$a][$b]["name"] . '<br/>';
+                    }
                 }
             echo "<hr/>";
 /* ========================Durchschnittliche Bewertung abrufen und berechnen==================== */
