@@ -15,18 +15,11 @@ $(function() {
             scrollTop: $($anchor.attr('href')).offset().top
         }, 1500, 'easeInOutExpo');
         event.preventDefault();
-
-        //TODO fix this
-
-        //$(".active").removeClass("active");
-        //$(this).addClass("active");
-
-    
-        $('.page-scroll').removeClass('active');
-
-        $(anchor.attr(this)).addClass('active');
-
-
-        // $('.page-scroll').addClass('active');
     });
+});
+
+//jQuery to make sure the active element of navbar is marked as active
+$(".nav a").on("click", function(){
+    $(".nav").find(".active").removeClass("active");
+    $(this).parent().addClass("active");
 });

@@ -84,6 +84,8 @@ color: white;
     color: white;
 }
 
+/* TODO alle block Klassen überarbeiten um Buttons besser zu gestalten
+    eventuell auch alle mit detail IDs */
 
 /*** EXTERNE**/
 
@@ -102,13 +104,17 @@ color: white;
 	position: relative;
     text-shadow: none;
     margin: 1em;
-	min-height: 300px;
 }
 
 .block:hover{
     margin-top: 8px;
 }
 
+/*** Buttons**/
+
+#detail1{
+    color: white;
+}
 
 
 /*.block > div {display: inline-block;}*/

@@ -14,6 +14,11 @@
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <link href="css/template.css" rel="stylesheet">
 
+        <!-- JavaScript -->
+        <!-- jQuery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="app.js"></script>
+
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
@@ -59,28 +64,13 @@ Heute offen ($today)<br/>
 <!--Anfang Php-->
 <div class="container">
     <div class="block">
-        <div class="title">" . $parsed_json_string[0]["name"] . "</div>
-        <div class="smalltitle"></div>
-        <div class="content">
-            Zusatzinfos
-        </div>
-        <div class="reference"><a href="#">mehr Information</a></div>
+        <button class="title" id="detail1">" . $parsed_json_string[0]["name"] . "</button>
     </div>
     <div class="block">
-        <div class="title">" . $parsed_json_string[4]["name"] . "</div>
-        <div class="smalltitle"></div>
-        <div class="content">
-            Zusatzinfos
-        </div>
-        <div class="reference"><a href="#">mehr Informationen</a></div>
+        <button class="title" id="detail2">" . $parsed_json_string[4]["name"] . "</button>
     </div>
     <div class="block">
-        <div class="title">" . $parsed_json_string[6]["name"] . "</div>
-        <div class="smalltitle"></div>
-        <div class="content">
-            Zusatzinfos
-        </div>
-        <div class="reference"><a href="#">mehr Informationen</a></div>
+        <button class="title" id="detail3">" . $parsed_json_string[6]["name"] . "</button>
     </div>
 </div>
 <!--Ende Php-->
