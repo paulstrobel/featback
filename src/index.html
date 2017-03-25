@@ -54,35 +54,29 @@
     <section id="menue" class="menue-section">
         <h1>Speisekarte</h1>
 
-<h2>
-$imensa["name"]
-</h2>
+        <h2>
+        $imensa["name"]
+        </h2>
 
 
-Heute offen ($today)<br/>
+        Heute offen ($today)<br/>
 
-<!--Anfang Php-->
-<div class="container">
-    <div class="block">
-        <button class="title" id="detail1">" . $parsed_json_string[0]["name"] . "</button>
-    </div>
-    <div class="block">
-        <button class="title" id="detail2">" . $parsed_json_string[4]["name"] . "</button>
-    </div>
-    <div class="block">
-        <button class="title" id="detail3">" . $parsed_json_string[6]["name"] . "</button>
-    </div>
-</div>
-<!--Ende Php-->
+        <!--Speißeübersicht-->
+        <div class="container" id="generelDetails"></div>
+
+        <!--Details zu den jeweiligen Speißen -->
+        <div class="popup modal" id="popup">
+        </div>
+
 
     </section>
 
     <section id="about" class="about-section">
-    ...und das die 2. ...
+        ...und das die 2. ...
     </section>
     
     <section id="contact" class="contact-section">
-    ... die 3. nicht vergessen
+        ... die 3. nicht vergessen
     </section>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
