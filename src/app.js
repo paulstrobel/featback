@@ -48,15 +48,18 @@ $(function() {
     $.get(url + "rest/getOverview.php", function( response ) {
         //console.log(response);
     
-        $('#generelDetails').html(''
-        +'<div class="block">'
-        +'    <button class="title" id="detail0">' + response[0]["name"] + '</button>'
-        +'</div>'
-        +'<div class="block">'
-        +'    <button class="title" id="detail1">' + response[3]["name"] + '</button>'
-        +'</div>'
-        +'<div class="block">'
-        +'    <button class="title" id="detail2">' + response[5]["name"] + '</button>'
+        $('#menue-row').html(''
+        +'<div class="row">'
+        /*+'<div class="col-md-2 col-md-offset-5"></div>'*/
+        +'  <div class="col">'
+        +'    <button class="menue-button" id="detail0">' + response[0]["name"] + '</button>'
+        +'  </div>'
+        +'  <div class="col">'
+        +'    <button class="menue-button" id="detail1">' + response[3]["name"] + '</button>'
+        +'  </div>'
+        +'  <div class="col">'
+        +'    <button class="menue-button" id="detail2">' + response[5]["name"] + '</button>'
+        +'  </div>'
         +'</div>');
 
     });

@@ -3,6 +3,17 @@ html, body {
     width: 100%;
 }
 
+/*------------
+Navigationsbar
+------------*/
+
+/*#top-menue-bar{
+    width: 100%;
+	text-align: center;
+    margin: 0 auto;
+	flex-wrap: wrap;
+}*/
+
 .navbar {
 opacity: 0.8;
 background: #000000;
@@ -37,6 +48,15 @@ text-transform: uppercase;
 color: white;
 }
 
+.navbar-brand.active{
+    color: white;
+}
+
+
+/*------------
+"Menü"-Displaybereich
+------------*/
+
 .menue-section {
     height: auto !important;
     min-height: 100%;
@@ -62,6 +82,10 @@ color: white;
     color: snow;
 }
 
+/*------------
+"Über"-Displaybereich
+------------*/
+
 .about-section{
     height: auto !important;
     min-height: 100%;
@@ -70,6 +94,11 @@ color: white;
     background:url(../img/w2.jpg) no-repeat center;
     background-size: cover;
 }
+
+
+/*------------
+"Kontakt"-Displaybereich
+------------*/
 
 .contact-section{
     height: auto !important;
@@ -80,22 +109,51 @@ color: white;
     background-size: cover;
 }
 
-.navbar-brand.active{
-    color: white;
-}
 
-/* TODO alle block Klassen überarbeiten um Buttons besser zu gestalten
-    eventuell auch alle mit detail IDs */
-
-/*** EXTERNE**/
-
+/*------------
+Menü-Bereich
+------------*/
 
 .container{
-    width: 100%;
-	text-align: center;
-    margin: 0 auto;
-	flex-wrap: wrap;
+   /* background-color: yellow;
+*/
 }
+
+.row{
+ margin-top: 4em;
+}
+
+.col{
+/*	width: 300px;
+    height: 200px;*/
+    float: left;
+	opacity: 0.8;
+    background: #000000;
+	position: relative;
+    text-shadow: none;
+    margin: 1em;
+}
+
+.col:hover{
+    margin-top: 8px;
+}
+
+.menue-button{
+    width: 300px;
+    height: 200px;
+    font-size: 1.5em;
+	font-family: 'Oswald', Arial, Verdana;
+    text-transform: uppercase;
+    color: white;
+    background: #000000;
+    border: 0;
+}
+
+
+/*------------
+Popup
+------------*/
+
 .popup {
     display:none;
     margin:0 auto;
@@ -107,56 +165,23 @@ color: white;
     color:white;
 }
 
-.block{
-	width: 300px;
-    float: left;
-	background:white;
-	position: relative;
-    text-shadow: none;
-    margin: 1em;
-}
-
-.block:hover{
-    margin-top: 8px;
-}
-
-/*** Buttons**/
-
-#detail1{
-    color: white;
-}
-
-
-/*.block > div {display: inline-block;}*/
-.title{
-	font-size: 1.5em;
+.pop-title{
 	color: white;
-	margin-bottom: 0.4em;
-    background-color: forestgreen;
+	margin-bottom: 1em;
+    font-family: 'Oswald', Arial, Verdana;
+    font-size: 40px;
+    text-transform: uppercase;
 }
-.smalltitle{
-	font-size: 1em;
-    color: gray;
+.pop-second-title{
+    font-family: 'Roboto', Arial, Verdana;
+    font-size: 10px;
+    color: snow;
 }
-.content{
+.pop-content{
+    font-family: 'Roboto', Arial, Verdana;
+    font-size: 3px;
 	margin-top: 1em;
-	font-size: 0.9em;
 	text-align: left;
-    color:black;
+    color:white;
     padding: 20px;
 }
-
-/*Media Query
-@media(min-width: 30rem){
-	.container {
-		/*Flexbox
-		display: inline-flex;
-		/*flex-wrap: wrap;
-	}
-	.block {
-		margin-left: 1em;
-		margin-right: 1em;
-		min-height: 200px;
-	}
-}
-*/

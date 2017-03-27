@@ -52,9 +52,9 @@ for ($i = 0; $i <= 2; $i++) {
     for ($a = 0; $a <= count($mahlzeit)-1; $a++) {
         echo "
         <div class=\"block\" id=\"details" . $a . "\">
-            <div class=\"title\">" . strstr($mahlzeit[$a][0]["name"], '[', true) . "</div>
-            <div class=\"smalltitle\"></div>
-            <div class=\"content\">";
+            <div class=\"pop-title\">" . strstr($mahlzeit[$a][0]["name"], '[', true) . "</div>
+            <div class=\"pop-second-title\"></div>
+            <div class=\"pop-content\">";
                 for ($b = 1; $b <= count($mahlzeit[$a])-1; $b++) {
                     if (strpos($mahlzeit[$a][$b]["name"], '[') !== false) {
                         echo strstr($mahlzeit[$a][$b]["name"], '[', true) . "<br/>";
