@@ -163,23 +163,24 @@ Popup
     top:20px;
     background-color:#313131;
     color:white;
+    text-shadow: none;
 }
 
 .pop-title{
 	color: white;
 	margin-bottom: 1em;
     font-family: 'Oswald', Arial, Verdana;
-    font-size: 40px;
+    font-size: 35px;
     text-transform: uppercase;
 }
 .pop-second-title{
     font-family: 'Roboto', Arial, Verdana;
-    font-size: 10px;
+    font-size: 20px;
     color: snow;
 }
 .pop-content{
     font-family: 'Roboto', Arial, Verdana;
-    font-size: 3px;
+    font-size: 13px;
 	margin-top: 1em;
 	text-align: left;
     color:white;

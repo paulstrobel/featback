@@ -83,7 +83,7 @@ for ($i = 0; $i <= 2; $i++) {
                 <input type=\"radio\" name=\"bewertung\" value=\"4\">4</input>
                 <input type=\"radio\" name=\"bewertung\" value=\"5\">5</input><br/>
                 Kommentar<br/>
-                <input type=\"text\" name=\"kommentar\"></input><br/><br/>
+                <input class=\"textbox\" type=\"text\" name=\"kommentar\"></input><br/><br/>
                 <input type=\"hidden\" name=\"mahlzeit_id\" value=\"" . $mahlzeit_id . "\">
                 <input type=\"submit\" value=\"Bewerten\">
             </form>
