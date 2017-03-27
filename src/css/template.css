@@ -164,6 +164,8 @@ Popup
     background-color:#313131;
     color:white;
     text-shadow: none;
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
 
 .pop-title{
@@ -185,4 +187,13 @@ Popup
 	text-align: left;
     color:white;
     padding: 20px;
+}
+
+.textbox{
+    color: black;
+}
+
+.glyphicon{
+    float: right;
+    color:white;
 }
