@@ -55,6 +55,7 @@ for ($i = 0; $i <= 2; $i++) {
             <div class=\"pop-title\">" . strstr($mahlzeit[$a][0]["name"], '[', true) . "</div>
             <div class=\"pop-second-title\"></div>
             <div class=\"pop-content\">";
+                echo "Weitere Beilagen:<br/>";
                 for ($b = 1; $b <= count($mahlzeit[$a])-1; $b++) {
                     if (strpos($mahlzeit[$a][$b]["name"], '[') !== false) {
                         echo strstr($mahlzeit[$a][$b]["name"], '[', true) . "<br/>";
@@ -77,15 +78,15 @@ for ($i = 0; $i <= 2; $i++) {
             <hr/>
             Essen bewerten:<br/>
             <form onsubmit=\"return setBewertung(this)\">
-                <input type=\"radio\" name=\"bewertung\" value=\"1\">1</input>
-                <input type=\"radio\" name=\"bewertung\" value=\"2\">2</input>
-                <input type=\"radio\" name=\"bewertung\" value=\"3\">3</input>
-                <input type=\"radio\" name=\"bewertung\" value=\"4\">4</input>
-                <input type=\"radio\" name=\"bewertung\" value=\"5\">5</input><br/>
+                <input type=\"radio\" class=\"rad-button\" name=\"bewertung\" value=\"1\"> 1 </input>
+                <input type=\"radio\" class=\"rad-button\" name=\"bewertung\" value=\"2\"> 2 </input>
+                <input type=\"radio\" class=\"rad-button\" name=\"bewertung\" value=\"3\"> 3 </input>
+                <input type=\"radio\" class=\"rad-button\" name=\"bewertung\" value=\"4\"> 4 </input>
+                <input type=\"radio\" class=\"rad-button\" name=\"bewertung\" value=\"5\"> 5 </input><br/>
                 Kommentar<br/>
                 <input class=\"textbox\" type=\"text\" name=\"kommentar\"></input><br/><br/>
                 <input type=\"hidden\" name=\"mahlzeit_id\" value=\"" . $mahlzeit_id . "\">
-                <input type=\"submit\" value=\"Bewerten\">
+                <input class=\"submit-button\" type=\"submit\" value=\"Bewerten\">
             </form>
             ";
 

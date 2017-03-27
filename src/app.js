@@ -4,6 +4,8 @@
 function closePopup()
 {
     $("#popup").fadeOut('fast');
+    $("#overlay").fadeOut('fast');
+    $('body').css('overflow','auto');
 }
 
 // URL vom Server wo das Back-end liegt
@@ -14,10 +16,13 @@ $(document).on('click touchstart', '#detail0, #detail1, #detail2', function(even
     $.get(url + "rest/getDetails.php", function( response ) {
         //console.log(response);
 
+        $('body').css('overflow','hidden');
+
+        $("#overlay").fadeIn('slow');
         $("#popup").fadeIn('slow');
         $("#popup").html('<a class="glyphicon glyphicon-remove" href="javascript:void(0);" onclick="closePopup();"></a>'
                         + response );
-
+                
         $("#details0").hide();
         $("#details1").hide();
         $("#details2").hide();
@@ -50,14 +55,13 @@ $(function() {
     
         $('#menue-row').html(''
         +'<div class="row">'
-        /*+'<div class="col-md-2 col-md-offset-5"></div>'*/
-        +'  <div class="col">'
+        +'  <div class="col-lg-4 col-centered">'
         +'    <button class="menue-button" id="detail0">' + response[0]["name"] + '</button>'
         +'  </div>'
-        +'  <div class="col">'
+        +'  <div class="col-lg-4 col-centered">'
         +'    <button class="menue-button" id="detail1">' + response[3]["name"] + '</button>'
         +'  </div>'
-        +'  <div class="col">'
+        +'  <div class="col-lg-4 col-centered">'
         +'    <button class="menue-button" id="detail2">' + response[5]["name"] + '</button>'
         +'  </div>'
         +'</div>');

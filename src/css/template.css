@@ -95,6 +95,18 @@ color: white;
     background-size: cover;
 }
 
+.about-text-area{
+    margin-top: 4em;
+    padding: 3em;
+    width: 60%
+}
+
+.about-text{
+    font-family: 'Roboto', Arial, Verdana;
+    font-size: 20px;
+    color:black;
+}
+
 
 /*------------
 "Kontakt"-Displaybereich
@@ -109,24 +121,47 @@ color: white;
     background-size: cover;
 }
 
+.contact-text-area{
+    margin-top: 2em;
+    text-align: center;
+    width: 62%;
+    margin-right: 20%;
+    margin-left: 20%;
+    background: black;
+    opacity: 0.8;
+    padding: 1em;
+}
+
+.contact-text{
+    font-family: 'Roboto', Arial, Verdana;
+    font-size: 20px;
+    color:white;
+    text-shadow: 2px 2px 0 rgba(0,0,0,0.5);
+}
+
+.contact-text-header{
+    color:white;
+     text-shadow: 2px 2px 0 rgba(0,0,0,0.5);
+}
+
+.mail{
+    font-family: 'Roboto', Arial, Verdana;
+    font-size: 30px;
+    color:red;
+    text-shadow: 2px 2px 0 rgba(0,0,0,0.5);
+}
+
 
 /*------------
 Menü-Bereich
 ------------*/
 
-.container{
-   /* background-color: yellow;
-*/
-}
-
-.row{
- margin-top: 4em;
-}
-
+.container
+.row
 .col{
 /*	width: 300px;
     height: 200px;*/
-    float: left;
+    /*float: left;*/
 	opacity: 0.8;
     background: #000000;
 	position: relative;
@@ -134,19 +169,26 @@ Menü-Bereich
     margin: 1em;
 }
 
-.col:hover{
-    margin-top: 8px;
+#menue-row{
+    margin-top: 3em;
 }
 
 .menue-button{
-    width: 300px;
-    height: 200px;
+    opacity: 0.8;
+    margin-bottom: 2em;
+    width: 350px;
+    height: 250px;
     font-size: 1.5em;
 	font-family: 'Oswald', Arial, Verdana;
     text-transform: uppercase;
     color: white;
     background: #000000;
     border: 0;
+}
+
+.menue-button:hover{
+    width: 355px;
+    height: 255px;  
 }
 
 
@@ -161,16 +203,32 @@ Popup
     height:90%;
     position:fixed;
     top:20px;
-    background-color:#313131;
+    background-color:#3d1111;
     color:white;
     text-shadow: none;
-    overflow-y: scroll;
+    overflow-y: auto;
     overflow-x: hidden;
+}
+
+#overlay {
+    display:none;
+    margin:0;
+    width:100%;
+    height:100%;
+    position:fixed;
+    top:0px;
+    background-color:black;
+    opacity: 0.7;
+    color:white;
+    text-shadow: none;
+    overflow-y: none;
+    overflow-x: none;
 }
 
 .pop-title{
 	color: white;
 	margin-bottom: 1em;
+    margin-top: 1em;
     font-family: 'Oswald', Arial, Verdana;
     font-size: 35px;
     text-transform: uppercase;
@@ -179,6 +237,7 @@ Popup
     font-family: 'Roboto', Arial, Verdana;
     font-size: 20px;
     color: snow;
+    text-align: center;
 }
 .pop-content{
     font-family: 'Roboto', Arial, Verdana;
@@ -187,13 +246,32 @@ Popup
 	text-align: left;
     color:white;
     padding: 20px;
+    text-align: center;
+}
+
+.rad-button{
+    padding-left: 6px;
+    padding-right: 6px;
 }
 
 .textbox{
     color: black;
+    width: 80%;
+    height: 100px;
 }
 
 .glyphicon{
     float: right;
     color:white;
+    margin: 5px;
+}
+
+.submit-button{
+    color: black;
+}
+
+
+/* PAUL */
+.current-comments{
+text-align: center;
 }
