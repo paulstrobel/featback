@@ -1,4 +1,4 @@
-<widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="featback" version="1.0.1">
+<widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="featback" version="1.1">
   <name>F-eat-back</name>
   <description>F-eat-back - Essensbewertung der Mensa der DHBW Karlsruhe</description>
   <author href="http://paulstrobel.de/featback/" email="featback@paulstrobel.de">Paul Strobel</author>

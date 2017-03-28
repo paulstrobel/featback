@@ -44,7 +44,7 @@
 			window.open = cordova.InAppBrowser.open;
 			
 			var options = "location=no,hidden=yes,zoom=no,clearsessioncache=no,clearcache=no"; // start in hidden mode
-			inAppBrowserRef = cordova.InAppBrowser.open('http://paulstrobel.de/featback/index.php', '_blank', options);
+			inAppBrowserRef = cordova.InAppBrowser.open('http://paulstrobel.de/featback/', '_blank', options);
 			
 			inAppBrowserRef.addEventListener('loadstart', loadStartCallBack);
 			inAppBrowserRef.addEventListener('loadstop', loadStopCallBack);
