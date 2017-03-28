@@ -316,8 +316,10 @@ text-align: center;
   position: relative;
   z-index: 2;
   background-color: #fff;
-  border: 2px solid #5c5eae;
-  color: #5c5eae;
+  /*border: 2px solid #5c5eae;*/
+  border: 2px solid red;
+  /*color: #5c5eae;*/
+  color:black;
   line-height: 50px;
   overflow: hidden;
 }
@@ -335,7 +337,8 @@ text-align: center;
   transform: scale(.5);
 }
 .circle:hover::after {
-  background: #5c5eae;
+  /*background: #5c5eae;*/
+  background: red;
   border-radius: 50%;
   -webkit-transform: scale(.9);
   transform: scale(.9);
@@ -347,7 +350,8 @@ text-align: center;
 
 .circle a {
   text-decoration: none;
-  color: #1d2087;
+  /*color: #1d2087;*/
+    color:Black;
 }
 
 .circle h2 {
@@ -355,5 +359,11 @@ text-align: center;
 }
 
 .circle h2 small {
-  color: #1d2087;
+  /*color: #1d2087;*/
+  color:Black;
+}
+
+.circle p {
+  font-size: 18px;
+  line-height: 20px;
 }
