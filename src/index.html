@@ -10,8 +10,8 @@
 
     <link href='http://fonts.googleapis.com/css?family=Oswald|Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
 
-    <link rel="icon" href="favicon.ico" type="../img/icon.ico">
-    <link rel="icon" type="image/x-icon" href="../img/icon.ico">
+    <!--<link rel="icon" href="favicon.ico" type="../img/icon.ico">
+    <link rel="icon" type="image/x-icon" href="../img/icon.ico">-->
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -60,12 +60,12 @@
     <section id="menue" class="menue-section">
         <h1>Speisekarte</h1>
 
-        <h2>
-            $imensa["name"]
+        <h2 id="mensaname">
+            
         </h2>
 
 
-        Heute offen ($today)<br/>
+        Heute offen (<span id="datum"></span>)<br/>
 
         <!--Speißeübersicht-->
         <div class="container" id="menue-row"></div>

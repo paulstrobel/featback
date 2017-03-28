@@ -51,18 +51,23 @@ $(function() {
   //alert("first call => lade Speisennamen und Bewertung");
 
     $.get(url + "rest/getOverview.php", function( response ) {
-        //console.log(response);
-    
+        var mensa = JSON.parse(response["mensa"]);
+        $('#mensaname').html(mensa.name);
+
+        $('#datum').html(response["datum"]);
+
+        //var mahlzeiten = JSON.parse(response["mahlzeit"]);
+        var mahlzeiten = response["mahlzeit"];
         $('#menue-row').html(''
         +'<div class="row">'
         +'  <div class="col-lg-4 col-centered">'
-        +'    <button class="menue-button" id="detail0">' + response[0]["name"] + '</button>'
+        +'    <button class="menue-button" id="detail0">' + mahlzeiten[0][0]["name"].split("[").shift() + '</button>'
         +'  </div>'
         +'  <div class="col-lg-4 col-centered">'
-        +'    <button class="menue-button" id="detail1">' + response[3]["name"] + '</button>'
+        +'    <button class="menue-button" id="detail1">' + mahlzeiten[1][0]["name"].split("[").shift() + '</button>'
         +'  </div>'
         +'  <div class="col-lg-4 col-centered">'
-        +'    <button class="menue-button" id="detail2">' + response[5]["name"] + '</button>'
+        +'    <button class="menue-button" id="detail2">' + mahlzeiten[2][0]["name"].split("[").shift() + '</button>'
         +'  </div>'
         +'</div>');
 
