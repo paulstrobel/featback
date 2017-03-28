@@ -179,7 +179,7 @@ Menü-Bereich
     width: 300px;
     height: 250px;
     font-size: 1.5em;
-	font-family: 'Oswald', Arial, Verdana;
+	   font-family: 'Oswald', Arial, Verdana;
     text-transform: uppercase;
     color: white;
     background: #000000;
@@ -187,11 +187,19 @@ Menü-Bereich
 }
 
 .menue-button:hover{
-    width: 355px;
+    width: 305px;
     height: 255px;  
 }
 
-
+@media(min-width: 900px){
+  .menue-button{
+    width: 370px;
+  }
+  .menue-button:hover{
+    width: 375px;
+    height: 255px;
+  }
+}
 /*------------
 Popup
 ------------*/
