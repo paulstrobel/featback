@@ -81,19 +81,24 @@ $(function() {
 function setBewertung(form)
 {
 
-    console.log(form.bewertung.value + "/" + form.kommentar.value + "/" + form.mahlzeit_id.value);
-    alert("Bewertung abgeschickt.");
+    if(form.bewertung.value == ""){
+        alert("Wähle erst eine Bewertung aus.");
+    }else{
+        console.log(form.bewertung.value + "/" + form.kommentar.value + "/" + form.mahlzeit_id.value);
+        alert("Bewertung abgeschickt.");
+
+        //TODO: Checken ob felder leer sind
+
+        $.post(url + "rest/setBewertung.php", { bewertung: form.bewertung.value, kommentar: form.kommentar.value, mahlzeit_id: form.mahlzeit_id.value})
+        .done(function( data ) {
+
+            console.log(data);
+
+            closePopup();
+
+        });
+    }
     
-    //TODO: Checken ob felder leer sind
-
-    $.post(url + "rest/setBewertung.php", { bewertung: form.bewertung.value, kommentar: form.kommentar.value, mahlzeit_id: form.mahlzeit_id.value})
-    .done(function( data ) {
-
-        console.log(data);
-
-        closePopup();
-
-    });
 
    return false;
 }

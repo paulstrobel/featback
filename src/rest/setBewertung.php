@@ -17,12 +17,17 @@ $ip_user = '46.223.128.1';
 //TODO: Variablen gegen Mysql-Injection prüfen
 //TODO: Keine leeren Einträge
 
-$query = "INSERT INTO Essensbewertung(ID, MahlzeitID, Bewertung, Kommentar, IP) VALUES ('$bewertungID','$mahlzeit_id','$bewertung','$kommentar','$ip_user')";
-	if(mysqli_query($mysqli, $query)){
-		echo "Danke f&uuml;r deine Bewertung :)!<br/>";
-	} else{
-		echo "ERROR - Folgender Fehler: " . mysqli_error($mysqli);
-	}
+if($bewertung == 0){
+	$message = "wähle eine Bewertung aus";
+	echo "<script type='text/javascript'>alert('" . $message . "');</script>";
+}else{
+	$query = "INSERT INTO Essensbewertung(ID, MahlzeitID, Bewertung, Kommentar, IP) VALUES ('$bewertungID','$mahlzeit_id','$bewertung','$kommentar','$ip_user')";
+		if(mysqli_query($mysqli, $query)){
+			echo "Danke f&uuml;r deine Bewertung :)!<br/>";
+		} else{
+			echo "ERROR - Folgender Fehler: " . mysqli_error($mysqli);
+		}
+}
 
 $mysqli->close();
 
