@@ -315,11 +315,12 @@ text-align: center;
 .circle {
   position: relative;
   z-index: 2;
-  background-color: #fff;
+  /*background-color: #fff;*/
+  background-color: black;
   /*border: 2px solid #5c5eae;*/
-  border: 2px solid red;
+  border: 2px solid black;
   /*color: #5c5eae;*/
-  color:black;
+  color:white;
   line-height: 50px;
   overflow: hidden;
 }
@@ -351,7 +352,7 @@ text-align: center;
 .circle a {
   text-decoration: none;
   /*color: #1d2087;*/
-    color:Black;
+    color:white;
 }
 
 .circle h2 {
@@ -360,7 +361,7 @@ text-align: center;
 
 .circle h2 small {
   /*color: #1d2087;*/
-  color:Black;
+  color:white;
 }
 
 .circle p {
