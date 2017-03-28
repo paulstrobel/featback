@@ -98,7 +98,7 @@ color: white;
 .about-text-area{
     margin-top: 4em;
     padding: 3em;
-    width: 60%
+    width: 100%
 }
 
 .about-text{
@@ -122,11 +122,11 @@ color: white;
 }
 
 .contact-text-area{
-    margin-top: 2em;
+    margin-top: 1em;
     text-align: center;
-    width: 60%;
-    margin-right: 20%;
-    margin-left: 20%;
+    width: 80%;
+    margin-right: 10%;
+    margin-left: 10%;
     background: black;
     opacity: 0.8;
     padding: 1em;
@@ -176,7 +176,7 @@ Menü-Bereich
 .menue-button{
     opacity: 0.8;
     margin-bottom: 2em;
-    width: 300px;
+    width: 220px;
     height: 250px;
     font-size: 1.5em;
 	   font-family: 'Oswald', Arial, Verdana;
@@ -187,19 +187,10 @@ Menü-Bereich
 }
 
 .menue-button:hover{
-    width: 305px;
-    height: 255px;  
+    color:red;
 }
 
-@media(min-width: 900px){
-  .menue-button{
-    width: 370px;
-  }
-  .menue-button:hover{
-    width: 375px;
-    height: 255px;
-  }
-}
+
 /*------------
 Popup
 ------------*/
@@ -238,7 +229,7 @@ Popup
 	margin-bottom: 1em;
     margin-top: 1em;
     font-family: 'Oswald', Arial, Verdana;
-    font-size: 35px;
+    font-size: 30px;
     text-transform: uppercase;
 }
 .pop-second-title{
@@ -375,4 +366,50 @@ text-align: center;
 .circle p {
   font-size: 18px;
   line-height: 20px;
+}
+
+
+/*------------
+Mobile Anpassung
+------------*/
+
+@media(min-width: 340px){
+  .menue-button{
+        width: 280px;
+  }
+}
+
+@media(min-width: 650px){
+  .menue-button{
+        width: 400px;
+  }
+  .about-text-area{
+        width: 80%
+    }
+}
+
+@media(min-width: 800px){
+  .menue-button{
+        width: 500px;
+  }
+  .about-text-area{
+        width: 70%
+    }
+}
+
+@media(min-width: 1200px){
+  .menue-button{
+        width: 370px;
+  }
+
+  .about-text-area{
+        width: 60%
+    }
+
+    .contact-text-area{
+        margin-top: 2em;
+        width: 60%;
+        margin-right: 20%;
+        margin-left: 20%;
+    }
 }
