@@ -13,7 +13,7 @@ var url = "http://paulstrobel.de/featback/";
 
 $(document).on('click', '#detail0, #detail1, #detail2', function(event) {
     
-    $.get(url + "rest/getDetails.php", function( response ) {
+    $.get(url + "../rest/getDetails.php", function( response ) {
         //console.log(response);
 
         $('body').css('overflow','hidden');
