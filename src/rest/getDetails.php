@@ -83,24 +83,18 @@ for ($i = 0; $i <= 2; $i++) {
             echo "Essen bewerten:<br/>
             <form onsubmit=\"return setBewertung(this)\">
 
-                <!--<input type=\"radio\" class=\"rad-button\" name=\"bewertung\" value=\"1\"> 1 </input>
-                <input type=\"radio\" class=\"rad-button\" name=\"bewertung\" value=\"2\"> 2 </input>
-                <input type=\"radio\" class=\"rad-button\" name=\"bewertung\" value=\"3\"> 3 </input>
-                <input type=\"radio\" class=\"rad-button\" name=\"bewertung\" value=\"4\"> 4 </input>
-                <input type=\"radio\" class=\"rad-button\" name=\"bewertung\" value=\"5\"> 5 </input><br/>-->
-
-<span class=\"rating\">
-        <input type=\"radio\" class=\"rating-input\" id=\"". $mahlzeit_id ."rating-input-1-5\" name=\"bewertung\" value=\"5\">
-        <label for=\"". $mahlzeit_id ."rating-input-1-5\" class=\"rating-star\"></label>
-        <input type=\"radio\" class=\"rating-input\" id=\"". $mahlzeit_id ."rating-input-1-4\" name=\"bewertung\" value=\"4\">
-        <label for=\"". $mahlzeit_id ."rating-input-1-4\" class=\"rating-star\"></label>
-        <input type=\"radio\" class=\"rating-input\" id=\"". $mahlzeit_id ."rating-input-1-3\" name=\"bewertung\" value=\"3\">
-        <label for=\"". $mahlzeit_id ."rating-input-1-3\" class=\"rating-star\"></label>
-        <input type=\"radio\" class=\"rating-input\" id=\"". $mahlzeit_id ."rating-input-1-2\" name=\"bewertung\" value=\"2\">
-        <label for=\"". $mahlzeit_id ."rating-input-1-2\" class=\"rating-star\"></label>
-        <input type=\"radio\" class=\"rating-input\" id=\"". $mahlzeit_id ."rating-input-1-1\" name=\"bewertung\" value=\"1\">
-        <label for=\"". $mahlzeit_id ."rating-input-1-1\" class=\"rating-star\"></label>
-</span>
+                <span class=\"rating\">
+                        <input type=\"radio\" class=\"rating-input\" id=\"". $mahlzeit_id ."rating-input-1-5\" name=\"bewertung\" value=\"5\">
+                        <label for=\"". $mahlzeit_id ."rating-input-1-5\" class=\"rating-star\"></label>
+                        <input type=\"radio\" class=\"rating-input\" id=\"". $mahlzeit_id ."rating-input-1-4\" name=\"bewertung\" value=\"4\">
+                        <label for=\"". $mahlzeit_id ."rating-input-1-4\" class=\"rating-star\"></label>
+                        <input type=\"radio\" class=\"rating-input\" id=\"". $mahlzeit_id ."rating-input-1-3\" name=\"bewertung\" value=\"3\">
+                        <label for=\"". $mahlzeit_id ."rating-input-1-3\" class=\"rating-star\"></label>
+                        <input type=\"radio\" class=\"rating-input\" id=\"". $mahlzeit_id ."rating-input-1-2\" name=\"bewertung\" value=\"2\">
+                        <label for=\"". $mahlzeit_id ."rating-input-1-2\" class=\"rating-star\"></label>
+                        <input type=\"radio\" class=\"rating-input\" id=\"". $mahlzeit_id ."rating-input-1-1\" name=\"bewertung\" value=\"1\">
+                        <label for=\"". $mahlzeit_id ."rating-input-1-1\" class=\"rating-star\"></label>
+                </span>
 
                 <br/>Kommentar<br/>
                 <input class=\"textbox\" type=\"text\" name=\"kommentar\"></input><br/><br/>
