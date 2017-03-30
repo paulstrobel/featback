@@ -55,59 +55,78 @@ for ($i = 0; $i <= 2; $i++) {
             <div class=\"pop-title\">" . strstr($mahlzeit[$a][0]["name"], '[', true) . "</div>
             <div class=\"pop-second-title\"></div>
             <div class=\"pop-content\">";
-                echo "Weitere Beilagen:<br/>";
+                
+                echo "<b>Beilagen</b><br/>| ";
                 for ($b = 1; $b <= count($mahlzeit[$a])-1; $b++) {
                     if (strpos($mahlzeit[$a][$b]["name"], '[') !== false) {
-                        echo strstr($mahlzeit[$a][$b]["name"], '[', true) . "<br/>";
+                        echo strstr($mahlzeit[$a][$b]["name"], '[', true) . " | ";
                     }else{
-                        echo $mahlzeit[$a][$b]["name"] . '<br/>';
+                        echo $mahlzeit[$a][$b]["name"] . ' | ';
                     }
                 }
             echo "<hr/>";
 /* ========================Durchschnittliche Bewertung abrufen und berechnen==================== */
+            echo "<div class=\"pop-content-left\">";
             $mahlzeit_id = $mahlzeit[$a][0]["id"]; 
             $query = "SELECT avg(Bewertung) FROM Essensbewertung WHERE MahlzeitID = $mahlzeit_id";
             if ($result = $mysqli->query($query)) {
                 $row = $result->fetch_row();
-                echo "Durchschnittliche Bewertung: " . $row[0] . "<br/>"; //TODO: Runden
+                echo "<div class=\"dbewertung\">" . round($row[0], 1) . "</div><br/>";
+                echo "Ø-Bewertung<br/>";
                 /* free result set */
                 $result->free();
             }
+            echo "</div><div class=\"pop-content-right\">";
+
+
 /* ========================Selbst Bewertung abgeben==================== */
-            echo "
-            <hr/>
-            Essen bewerten:<br/>
+            echo "Essen bewerten:<br/>
             <form onsubmit=\"return setBewertung(this)\">
-                <input type=\"radio\" class=\"rad-button\" name=\"bewertung\" value=\"1\"> 1 </input>
+
+                <!--<input type=\"radio\" class=\"rad-button\" name=\"bewertung\" value=\"1\"> 1 </input>
                 <input type=\"radio\" class=\"rad-button\" name=\"bewertung\" value=\"2\"> 2 </input>
                 <input type=\"radio\" class=\"rad-button\" name=\"bewertung\" value=\"3\"> 3 </input>
                 <input type=\"radio\" class=\"rad-button\" name=\"bewertung\" value=\"4\"> 4 </input>
-                <input type=\"radio\" class=\"rad-button\" name=\"bewertung\" value=\"5\"> 5 </input><br/>
-                Kommentar<br/>
+                <input type=\"radio\" class=\"rad-button\" name=\"bewertung\" value=\"5\"> 5 </input><br/>-->
+
+<span class=\"rating\">
+        <input type=\"radio\" class=\"rating-input\" id=\"". $mahlzeit_id ."rating-input-1-5\" name=\"bewertung\" value=\"5\">
+        <label for=\"". $mahlzeit_id ."rating-input-1-5\" class=\"rating-star\"></label>
+        <input type=\"radio\" class=\"rating-input\" id=\"". $mahlzeit_id ."rating-input-1-4\" name=\"bewertung\" value=\"4\">
+        <label for=\"". $mahlzeit_id ."rating-input-1-4\" class=\"rating-star\"></label>
+        <input type=\"radio\" class=\"rating-input\" id=\"". $mahlzeit_id ."rating-input-1-3\" name=\"bewertung\" value=\"3\">
+        <label for=\"". $mahlzeit_id ."rating-input-1-3\" class=\"rating-star\"></label>
+        <input type=\"radio\" class=\"rating-input\" id=\"". $mahlzeit_id ."rating-input-1-2\" name=\"bewertung\" value=\"2\">
+        <label for=\"". $mahlzeit_id ."rating-input-1-2\" class=\"rating-star\"></label>
+        <input type=\"radio\" class=\"rating-input\" id=\"". $mahlzeit_id ."rating-input-1-1\" name=\"bewertung\" value=\"1\">
+        <label for=\"". $mahlzeit_id ."rating-input-1-1\" class=\"rating-star\"></label>
+</span>
+
+                <br/>Kommentar<br/>
                 <input class=\"textbox\" type=\"text\" name=\"kommentar\"></input><br/><br/>
                 <input type=\"hidden\" name=\"mahlzeit_id\" value=\"" . $mahlzeit_id . "\">
                 <input class=\"submit-button\" type=\"submit\" value=\"Bewerten\">
-            </form>
+            </form></div></div>
             ";
 
-
-            /* ===================Alle bisherigen Bewertungen anzeigen========================= */
-            echo "<hr/>Alle Bewertungen:<br/>";
+/* ===================Alle bisherigen Bewertungen anzeigen========================= */
+            echo "
+            <div class=\"pop-content-bewertungen\">
+            <hr/>Was andere sagen..<br/><br/>";
             $query = "SELECT Bewertung, Kommentar FROM Essensbewertung WHERE MahlzeitID = $mahlzeit_id";
             if ($result = $mysqli->query($query)) {
                 /* fetch associative array */
                 //TODO: if anzahl > 0
-                echo "<table>";
-                echo "<tr id=\"tableheader\"><th>Bewertung &nbsp;&nbsp;</th><th>Kommentar</th></tr>";
+                echo "<div class=\"bewertungen-tabelle\">";
                 while ($row = $result->fetch_assoc()) {
-                    echo "<tr><td>" . $row["Bewertung"] . "</td><td>" . $row["Kommentar"] . "</td></tr>";
+                    echo "<i>" . $row["Kommentar"] . "</i> [" . $row["Bewertung"] . "]<br/>";
                 }
-                echo "</table>";
                 /* free result set */
                 $result->free();
             }
-            echo "</div>";
-            echo "</div>";
+
+
+            echo "</div></div></div>";
     }
 
 

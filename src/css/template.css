@@ -209,6 +209,14 @@ Popup
     overflow-x: hidden;
 }
 
+
+@media(min-width: 900px){
+  .popup{
+    width:50%;
+    height: 80%;
+  }
+}
+
 #overlay {
     display:none;
     margin:0;
@@ -226,11 +234,11 @@ Popup
 
 .pop-title{
 	color: white;
-	margin-bottom: 1em;
-    margin-top: 1em;
-    font-family: 'Oswald', Arial, Verdana;
-    font-size: 30px;
-    text-transform: uppercase;
+	margin-bottom: -20px;
+  margin-top: 1em;
+  font-family: 'Oswald', Arial, Verdana;
+  font-size: 30px;
+  text-transform: uppercase;
 }
 .pop-second-title{
     font-family: 'Roboto', Arial, Verdana;
@@ -241,11 +249,45 @@ Popup
 .pop-content{
     font-family: 'Roboto', Arial, Verdana;
     font-size: 13px;
-	margin-top: 1em;
-	text-align: left;
+	  margin-top: 0px;
+    text-align: left;
     color:white;
     padding: 20px;
     text-align: center;
+    margin-bottom: 20px;
+    min-height: 240px;
+}
+
+.pop-content-left{
+  float: left;
+  width: 30%;
+  min-height: 120px;
+}
+
+.pop-content-right{
+  float: right;
+  width: 70%;
+  min-height: 120px;
+  padding-left: 40px;
+    text-align: left;
+}
+
+.pop-content-bewertungen{
+    font-family: 'Roboto', Arial, Verdana;
+    font-size: 13px;
+    margin-top: 0px;
+    text-align: left;
+    color:white;
+    padding-left: 20px;
+    padding-right: 20px;
+    text-align: center;
+    margin-bottom: 20px;
+    min-height: 240px;
+}
+
+.bewertungen-tabelle{
+    margin: 0 auto;
+    font-size: 20px;
 }
 
 .rad-button{
@@ -253,10 +295,25 @@ Popup
     padding-right: 6px;
 }
 
+.label_item {
+opacity: 0.3;
+}
+
+/**Backup
+.rad-button:checked + label {
+opacity: 1;
+}**/
+
+.rad-button:checked + label{
+opacity: 1;
+}
+
+input.rad-button:checked ~ label.rad-button:before { opacity: 1; }
+
+
 .textbox{
     color: black;
     width: 80%;
-    height: 100px;
 }
 
 .glyphicon{
@@ -412,4 +469,46 @@ Mobile Anpassung
         margin-right: 20%;
         margin-left: 20%;
     }
+}
+
+.dbewertung{
+  font-size: 40px;
+  border: 2px dashed white;
+  padding: 2px;
+}
+
+/*Stern-Bewertung mit Effekt*/
+.rating {
+    overflow: hidden;
+    display: inline-block;
+    font-size: 0;
+    position: relative;
+}
+
+.rating-input {
+    float: right;
+    width: 0px;
+    height: 0px;
+    padding: 0;
+    margin: 0 0 0 -16px;
+    opacity: 0;
+}
+
+.rating:hover .rating-star:hover,
+.rating:hover .rating-star:hover ~ .rating-star,
+.rating-input:checked ~ .rating-star {
+    opacity: 1;
+}
+
+.rating-star,
+.rating:hover .rating-star {
+    position: relative;
+    float: right;
+    display: block;
+    width: 16px;
+    height: 16px;
+    opacity: 0.2;
+    margin-right: 3px;
+    text-decoration: none;
+    background: url('http://paulstrobel.de/featback/img/star.png') 0 -16px;
 }
