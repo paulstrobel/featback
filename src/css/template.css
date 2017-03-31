@@ -3,16 +3,10 @@ html, body {
     width: 100%;
 }
 
+
 /*------------
 Navigationsbar
 ------------*/
-
-/*#top-menue-bar{
-    width: 100%;
-	text-align: center;
-    margin: 0 auto;
-	flex-wrap: wrap;
-}*/
 
 .navbar {
 opacity: 0.8;
@@ -81,6 +75,7 @@ color: white;
     font-size: 20px;
     color: snow;
 }
+
 
 /*------------
 "Über"-Displaybereich
@@ -153,15 +148,12 @@ color: white;
 
 
 /*------------
-Menü-Bereich
+Menü-Auswahl-Bereich
 ------------*/
 
 .container
 .row
 .col{
-/*	width: 300px;
-    height: 200px;*/
-    /*float: left;*/
 	opacity: 0.8;
     background: #000000;
 	position: relative;
@@ -326,14 +318,10 @@ input.rad-button:checked ~ label.rad-button:before { opacity: 1; }
     color: black;
 }
 
-
-/* PAUL */
 .current-comments{
 text-align: center;
 }
 
-
-/*Experimental*/
 .col-sm-3{
     margin-left: calc(50% - 115px);
     width: 100px;
@@ -394,7 +382,6 @@ text-align: center;
   transform: scale(.5);
 }
 .circle:hover::after {
-  /*background: #5c5eae;*/
   background: red;
   border-radius: 50%;
   -webkit-transform: scale(.9);
@@ -407,7 +394,6 @@ text-align: center;
 
 .circle a {
   text-decoration: none;
-  /*color: #1d2087;*/
     color:white;
 }
 
@@ -416,7 +402,6 @@ text-align: center;
 }
 
 .circle h2 small {
-  /*color: #1d2087;*/
   color:white;
 }
 
@@ -427,7 +412,7 @@ text-align: center;
 
 
 /*------------
-Mobile Anpassung
+Mobilgerät Anpassung
 ------------*/
 
 @media(min-width: 340px){
@@ -476,6 +461,7 @@ Mobile Anpassung
   border: 2px dashed white;
   padding: 2px;
 }
+
 
 /*Stern-Bewertung mit Effekt*/
 .rating {
