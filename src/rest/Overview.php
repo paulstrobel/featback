@@ -9,6 +9,7 @@ include '../dbconnection.php';
 $mysqli = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD);
 mysqli_select_db($mysqli, DB_NAME);
 
+/*
 $method = $_SERVER['RESQUEST_METHOD']
 if ($method == 'POST') {
     // Platzhalter für eine Methode um eine Übersicht zu speichern
@@ -20,7 +21,7 @@ if ($method == 'POST') {
     // Platzhalter für eine Methode um eine Übersicht zu löschen
 } 
 
-function getOverview{
+function getOverview{ */
     /* gets the data from a URL */
     function get_data($url) {
         $ch = curl_init();
@@ -69,7 +70,7 @@ function getOverview{
     $overview["mahlzeit"] = $mahlzeit;
 
     echo json_encode($overview, true);
-}
+//}
 
 
 

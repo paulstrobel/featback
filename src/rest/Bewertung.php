@@ -7,6 +7,7 @@ include '../dbconnection.php';
 $mysqli = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD);
 mysqli_select_db($mysqli, DB_NAME);
 
+/*
 $method = $_SERVER['RESQUEST_METHOD']
 if ($method == 'POST') {
 	postBewertung();
@@ -19,7 +20,7 @@ if ($method == 'POST') {
 } 
 
 function postBewertung{
-	
+	*/
 	$mahlzeit_id = mysqli_real_escape_string($mysqli, $_REQUEST['mahlzeit_id']);
 	$bewertung = mysqli_real_escape_string($mysqli, $_REQUEST['bewertung']);
 	$kommentar = mysqli_real_escape_string($mysqli, $_REQUEST['kommentar']);
@@ -41,7 +42,7 @@ function postBewertung{
 				echo "ERROR - Folgender Fehler: " . mysqli_error($mysqli);
 			}
 	}
-}
+//}
 
 
 $mysqli->close();
