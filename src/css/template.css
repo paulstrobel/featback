@@ -146,11 +146,47 @@ color: white;
     text-shadow: 2px 2px 0 rgba(0,0,0,0.5);
 }
 
+/*------------
+Mensa Information und Datumauswahls-Bereich
+------------*/
 
+#mensaname{
+  margin-top: -10px;
+  margin-bottom: 30px;
+}
+#datum{
+  font-size: 20px;
+  background-color: black;
+  padding: 4px;
+  border-left: 6px solid red;
+  border-right: 6px solid red;
+}
+
+.arrow{
+  height: 25px;
+  margin-left: 6px;
+  margin-right: 6px;
+  margin-bottom: 5px;
+}
+.arrow:hover{
+  height:30px;
+  margin-left: 2px;
+  margin-right: 1px;
+  margin-bottom: 0px;
+}
+
+#tag{
+  height: 0px;
+}
+
+#tag, #datumFuerDetails{
+  display: block;
+  visibility: hidden;
+  height: 0px;
+}
 /*------------
 Menü-Auswahl-Bereich
 ------------*/
-
 .container
 .row
 .col{
@@ -415,9 +451,18 @@ text-align: center;
 Mobilgerät Anpassung
 ------------*/
 
+@media(max-width: 339px){
+  #datum{
+      font-size: 10px;
+  }
+}
+
 @media(min-width: 340px){
   .menue-button{
         width: 280px;
+  }
+  #datum{
+      font-size: 15px;
   }
 }
 
@@ -427,7 +472,10 @@ Mobilgerät Anpassung
   }
   .about-text-area{
         width: 80%
-    }
+  }
+  #datum{
+      font-size: 15px;
+  }
 }
 
 @media(min-width: 800px){
@@ -436,7 +484,10 @@ Mobilgerät Anpassung
   }
   .about-text-area{
         width: 70%
-    }
+  }
+  #datum{
+      font-size: 20px;
+  }
 }
 
 @media(min-width: 1200px){
@@ -498,3 +549,11 @@ Mobilgerät Anpassung
     text-decoration: none;
     background: url('http://paulstrobel.de/featback/img/star.png') 0 -16px;
 }
+
+
+
+
+
+
+
+

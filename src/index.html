@@ -55,9 +55,12 @@
   
     <section id="menue" class="menue-section">
         <h1>Speisekarte</h1>
-        <h2 id="mensaname">
-        </h2>
-        Heute offen (<span id="datum"></span>)<br/>
+
+            <h2 id="mensaname"></h2>
+            <a href="#" onclick="minusTag()"><img src="img/arrow_left.png" class="arrow"/> </a><span id="datum"></span><a href="#" onclick="plusTag()"> <img src="img/arrow_right.png" class="arrow"/></a>
+            <span id="tag">8</span>
+            <span id="datumFuerDetails"></span>
+
         <!--Speißeübersicht-->
         <div class="container" id="menue-row"></div>
         <!--Details zu den jeweiligen Speißen -->

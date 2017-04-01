@@ -8,20 +8,8 @@ include '../dbconnection.php';
 $mysqli = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD);
 mysqli_select_db($mysqli, DB_NAME);
 
-/*
-$method = $_SERVER['RESQUEST_METHOD']
-if ($method == 'POST') {
-    // Platzhalter für eine Methode um Details zu speichern
-} elseif ($method == 'GET') {
-    getDetails();
-} elseif ($method == 'PUT') {  
-    // Platzhalter für eine Methode um Details zu aktualisieren
-} elseif ($method == 'DELETE') {
-    // Platzhalter für eine Methode um Details zu löschen
-} 
 
-function getDetails{ */
-    /* gets the data from a URL */
+   /* gets the data from a URL */
     function get_data($url) {
         $ch = curl_init();
         $timeout = 5;
@@ -34,7 +22,12 @@ function getDetails{ */
     }
 
     /*Datum des Speiseplans auswählen*/
-    $date_meals = date('Y-m-d');
+    /*$date_meals = date('Y-m-d');*/
+    /*$z = -2;
+    $date_meals = date('Y-m-d',strtotime("$z days"));*/
+
+    $date_meals = $_GET["Day"];
+    /*$date_meals = "2017-03-30";*/
     $mensa = 33; /*33 = DHBW Karlsruhe*/
 
     /*Daten für Mahlzeiten ziehen*/
@@ -76,6 +69,11 @@ function getDetails{ */
                             echo $mahlzeit[$a][$b]["name"] . ' | ';
                         }
                     }
+                    echo "<br/><b>Preise</b><br/>";
+                    echo "Studenten: " . $mahlzeit[$a][0]["prices"]["students"] . "€";
+                    echo " | Angestellte: " . $mahlzeit[$a][0]["prices"]["employees"] . "€";
+                    echo " | Schüler: " . $mahlzeit[$a][0]["prices"]["pupils"] . "€";
+                    echo " | Andere: " . $mahlzeit[$a][0]["prices"]["others"] . "€";
                 echo "<hr/>";
     /* ========================Durchschnittliche Bewertung abrufen und berechnen==================== */
                 echo "<div class=\"pop-content-left\">";

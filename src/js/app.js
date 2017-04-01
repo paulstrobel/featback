@@ -12,9 +12,13 @@ function closePopup()
 var url = "http://paulstrobel.de/featback/";
 
 $(document).on('click', '#detail0, #detail1, #detail2', function(event) {
-    
-    $.get(url + "rest/Details.php", function( response ) {
+    //var datum = response["datum"];
+    var tagFuerDetails = document.getElementById("datumFuerDetails").innerHTML;
+    console.log('übertragener Tag: ' + tagFuerDetails);
+    console.log('hallo2');
+    $.get(url + "rest/Details.php?Day=" + tagFuerDetails, function( response ) {
         //console.log(response);
+
 
         $('body').css('overflow','hidden');
 
@@ -45,6 +49,101 @@ $(document).on('click', '#detail0, #detail1, #detail2', function(event) {
     
 });
 
+        //Wochentag anzeigen
+        function getDayOfWeek(date) {
+          var dayOfWeek = new Date(date).getDay();    
+          return isNaN(dayOfWeek) ? null : ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'][dayOfWeek];
+        }
+        //Ende Wochentag anzeigen
+        //Monat anzeigen
+        function getMonthOfYear(date) {
+          var monthOfYear = new Date(date).getMonth();    
+          return isNaN(monthOfYear) ? null : ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'][monthOfYear];
+        }
+        //Ende Monat anzeigen
+
+
+function minusTag(){
+    $.get(url + "rest/Overview.php", function( response ) {
+        var datum = response["datum"];
+        var tag = document.getElementById("tag").innerHTML -1;
+
+        document.getElementById("tag").innerHTML = tag;
+
+        tagImMonat = new Date(datum[tag]).getDate();
+        jahr = new Date(datum[tag]).getYear() +1900;
+
+        $('#datum').html(getDayOfWeek(datum[tag])+ ", " + tagImMonat + "." + getMonthOfYear(datum[tag]) + " " + jahr);
+        console.log(datum);
+
+        //Wochenende nicht anzeigen
+        var ausgewaehlterTag = new Date();
+        ausgewaehlterTag.setFullYear(datum[tag].substring(0,4));
+        ausgewaehlterTag.setMonth(datum[tag].substring(5,7)-1);
+        ausgewaehlterTag.setDate(datum[tag].substring(8,10));
+        console.log('ausgewaehlterTag: ' + ausgewaehlterTag);
+        if(ausgewaehlterTag.getDay() == 6 || ausgewaehlterTag.getDay() == 0){
+            $('#menue-row').html('Mensa geschlossen.');
+        }else{
+            $('#datumFuerDetails').html(datum[tag]);
+            var mahlzeiten = response["mahlzeit"];
+            $('#menue-row').html(''
+            +'<div class="row">'
+            +'  <div class="col-lg-4 col-centered">'
+            +'    <button class="menue-button" id="detail0">' + mahlzeiten[tag][0][0]["name"].split("[").shift() + '</button>'
+            +'  </div>'
+            +'  <div class="col-lg-4 col-centered">'
+            +'    <button class="menue-button" id="detail1">' + mahlzeiten[tag][1][0]["name"].split("[").shift() + '</button>'
+            +'  </div>'
+            +'  <div class="col-lg-4 col-centered">'
+            +'    <button class="menue-button" id="detail2">' + mahlzeiten[tag][2][0]["name"].split("[").shift() + '</button>'
+            +'  </div>'
+            +'</div>');
+        }
+    });
+}
+
+function plusTag(){
+    $.get(url + "rest/Overview.php", function( response ) {
+        var datum = response["datum"];
+        var tag = parseInt(document.getElementById("tag").innerHTML) + 1;
+
+        document.getElementById("tag").innerHTML = tag;
+
+        tagImMonat = new Date(datum[tag]).getDate();
+        jahr = new Date(datum[tag]).getYear() +1900;
+
+        $('#datum').html(getDayOfWeek(datum[tag])+ ", " + tagImMonat + "." + getMonthOfYear(datum[tag]) + " " + jahr);
+        console.log(datum);
+
+        //Wochenende nicht anzeigen
+        var ausgewaehlterTag = new Date();
+        ausgewaehlterTag.setFullYear(datum[tag].substring(0,4));
+        ausgewaehlterTag.setMonth(datum[tag].substring(5,7)-1);
+        ausgewaehlterTag.setDate(datum[tag].substring(8,10));
+        console.log('Ausgewähltes Datum: ' + ausgewaehlterTag);
+        if(ausgewaehlterTag.getDay() == 6 || ausgewaehlterTag.getDay() == 0){
+            $('#menue-row').html('Mensa geschlossen.');
+        }else{
+            $('#datumFuerDetails').html(datum[tag]);
+            var mahlzeiten = response["mahlzeit"];
+            $('#menue-row').html(''
+            +'<div class="row">'
+            +'  <div class="col-lg-4 col-centered">'
+            +'    <button class="menue-button" id="detail0">' + mahlzeiten[tag][0][0]["name"].split("[").shift() + '</button>'
+            +'  </div>'
+            +'  <div class="col-lg-4 col-centered">'
+            +'    <button class="menue-button" id="detail1">' + mahlzeiten[tag][1][0]["name"].split("[").shift() + '</button>'
+            +'  </div>'
+            +'  <div class="col-lg-4 col-centered">'
+            +'    <button class="menue-button" id="detail2">' + mahlzeiten[tag][2][0]["name"].split("[").shift() + '</button>'
+            +'  </div>'
+            +'</div>');
+        }
+    });
+}
+
+
 
 /* index.html das erste mal aufgerufen */
 $(function() {
@@ -54,22 +153,43 @@ $(function() {
         var mensa = JSON.parse(response["mensa"]);
         $('#mensaname').html(mensa.name);
 
-        $('#datum').html(response["datum"]);
+        var datum = response["datum"];
+        console.log('Ausgewähltes Datum: ' + datum[8]);
+        var tag = 8;
 
-        //var mahlzeiten = JSON.parse(response["mahlzeit"]);
-        var mahlzeiten = response["mahlzeit"];
-        $('#menue-row').html(''
-        +'<div class="row">'
-        +'  <div class="col-lg-4 col-centered">'
-        +'    <button class="menue-button" id="detail0">' + mahlzeiten[0][0]["name"].split("[").shift() + '</button>'
-        +'  </div>'
-        +'  <div class="col-lg-4 col-centered">'
-        +'    <button class="menue-button" id="detail1">' + mahlzeiten[1][0]["name"].split("[").shift() + '</button>'
-        +'  </div>'
-        +'  <div class="col-lg-4 col-centered">'
-        +'    <button class="menue-button" id="detail2">' + mahlzeiten[2][0]["name"].split("[").shift() + '</button>'
-        +'  </div>'
-        +'</div>');
+        document.getElementById("tag").value = tag;
+
+        tagImMonat = new Date(datum[tag]).getDate();
+        jahr = new Date(datum[tag]).getYear() +1900;
+
+        $('#datum').html(getDayOfWeek(datum[tag])+ ", " + tagImMonat + "." + getMonthOfYear(datum[tag]) + " " + jahr);
+        console.log(datum);
+
+        //Wochenende nicht anzeigen
+        var ausgewaehlterTag = new Date();
+        ausgewaehlterTag.setFullYear(datum[tag].substring(0,4));
+        ausgewaehlterTag.setMonth(datum[tag].substring(5,7)-1);
+        ausgewaehlterTag.setDate(datum[tag].substring(8,10));
+        console.log('ausgewaehlterTag: ' + ausgewaehlterTag);
+        if(ausgewaehlterTag.getDay() == 6 || ausgewaehlterTag.getDay() == 0){
+            $('#menue-row').html('Mensa geschlossen.');
+        }else{
+            $('#datumFuerDetails').html(datum[tag]);
+            var mahlzeiten = response["mahlzeit"];
+            console.log(mahlzeiten);
+            $('#menue-row').html(''
+            +'<div class="row">'
+            +'  <div class="col-lg-4 col-centered">'
+            +'    <button class="menue-button" id="detail0">' + mahlzeiten[tag][0][0]["name"].split("[").shift() + '</button>'
+            +'  </div>'
+            +'  <div class="col-lg-4 col-centered">'
+            +'    <button class="menue-button" id="detail1">' + mahlzeiten[tag][1][0]["name"].split("[").shift() + '</button>'
+            +'  </div>'
+            +'  <div class="col-lg-4 col-centered">'
+            +'    <button class="menue-button" id="detail2">' + mahlzeiten[tag][2][0]["name"].split("[").shift() + '</button>'
+            +'  </div>'
+            +'</div>');
+        }
 
     });
 
