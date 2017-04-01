@@ -13,7 +13,7 @@ var url = "http://paulstrobel.de/featback/";
 
 $(document).on('click', '#detail0, #detail1, #detail2', function(event) {
     
-    $.get(url + "rest/getDetails.php", function( response ) {
+    $.get(url + "rest/Details.php", function( response ) {
         //console.log(response);
 
         $('body').css('overflow','hidden');
@@ -50,7 +50,7 @@ $(document).on('click', '#detail0, #detail1, #detail2', function(event) {
 $(function() {
   //alert("first call => lade Speisennamen und Bewertung");
 
-    $.get(url + "rest/getOverview.php", function( response ) {
+    $.get(url + "rest/Overview.php", function( response ) {
         var mensa = JSON.parse(response["mensa"]);
         $('#mensaname').html(mensa.name);
 
@@ -89,7 +89,7 @@ function setBewertung(form)
 
         //TODO: Checken ob felder leer sind
 
-        $.post(url + "rest/setBewertung.php", { bewertung: form.bewertung.value, kommentar: form.kommentar.value, mahlzeit_id: form.mahlzeit_id.value})
+        $.post(url + "rest/Bewertung.php", { bewertung: form.bewertung.value, kommentar: form.kommentar.value, mahlzeit_id: form.mahlzeit_id.value})
         .done(function( data ) {
 
             console.log(data);
