@@ -155,7 +155,7 @@ $(function() {
 
         var datum = response["datum"];
         console.log('Ausgewähltes Datum: ' + datum[8]);
-        var tag = 8;
+        var tag = 10;
 
         document.getElementById("tag").value = tag;
 
