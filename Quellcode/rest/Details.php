@@ -5,22 +5,22 @@ header('Access-Control-Allow-Origin: *');
 // Import einer PHP-Datei mit Login-Daten zum Aufbau einer Verbindung zur Datenbank
 include '../dbconnection.php';
 
+$method = strtoupper($_SERVER['REQUEST_METHOD']);
+
+if ($method == 'POST') {
+    // Platzhalter
+} elseif ($method == 'GET') {
+    getDetails();
+} elseif ($method == 'PUT') {
+	// Platzhalter für eine  Methode um Bewertung zu aktualisieren
+} elseif ($method == 'DELETE') {
+	// Platzhalter für eine Methode um Bewertung zu löschen
+} 
+
+function getDetails() {    
 // Verbindung zu unserer Datenbank herstellen
 $mysqli = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD);
 mysqli_select_db($mysqli, DB_NAME);
-
-
-// Funktion, mit der eine API zur openMensa-API aufgebaut werden kann, die nicht von unserem Hosting-Provider geblockt wird
-function get_data($url) {
-    $ch = curl_init();
-    $timeout = 5;
-    curl_setopt($ch, CURLOPT_URL, $url);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-    curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, $timeout);
-    $data = curl_exec($ch);
-    curl_close($ch);
-    return $data;
-}
 
 // Datum des Speiseplans auswählen
 $date_meals = $_GET["Day"];
@@ -129,5 +129,17 @@ for ($i = 0; $i <= 2; $i++) {
 
 // Schließen der Datenbankverbindung
 $mysqli->close();
+}
+// Funktion, mit der eine API zur openMensa-API aufgebaut werden kann, die nicht von unserem Hosting-Provider geblockt wird
+function get_data($url) {
+    $ch = curl_init();
+    $timeout = 5;
+    curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, $timeout);
+    $data = curl_exec($ch);
+    curl_close($ch);
+    return $data;
+}
 
 ?>
