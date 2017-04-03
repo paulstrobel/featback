@@ -8,13 +8,13 @@ include '../dbconnection.php';
 $method = strtoupper($_SERVER['REQUEST_METHOD']);
 
 if ($method == 'POST') {
-    // Platzhalter
+    // Platzhalter für eine Methode, um Details zu speichern
 } elseif ($method == 'GET') {
     getDetails();
 } elseif ($method == 'PUT') {
-	// Platzhalter für eine  Methode um Bewertung zu aktualisieren
+	// Platzhalter für eine  Methode, um Details zu aktualisieren
 } elseif ($method == 'DELETE') {
-	// Platzhalter für eine Methode um Bewertung zu löschen
+	// Platzhalter für eine Methode, um Details zu löschen
 } 
 
 function getDetails() {    
