@@ -13,7 +13,7 @@ if ($method == 'POST') {
 } elseif ($method == 'GET') {
     getOverview();
 } elseif ($method == 'PUT') {
-	// Platzhalter für eine  Methode, um Übersicht zu aktualisieren
+	// Platzhalter für eine Methode, um Übersicht zu aktualisieren
 } elseif ($method == 'DELETE') {
 	// Platzhalter für eine Methode, um Übersicht zu löschen
 } 
