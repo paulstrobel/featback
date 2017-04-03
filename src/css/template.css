@@ -99,9 +99,12 @@ color: white;
 .about-text{
     font-family: 'Roboto', Arial, Verdana;
     font-size: 20px;
-    color:black;
+    color:snow;
 }
 
+.about-title{
+    color:snow;
+}
 
 /*------------
 "Kontakt"-Displaybereich
