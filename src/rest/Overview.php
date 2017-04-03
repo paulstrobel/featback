@@ -10,6 +10,20 @@ include '../dbconnection.php';
 $mysqli = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD);
 mysqli_select_db($mysqli, DB_NAME);
 
+/*REST Teil
+$method = $_SERVER['REQUEST_METHOD']
+if ($method == 'POST') {
+    getOverview();// Platzhalter für eine Methode um eine Übersicht zu speichern
+} elseif ($method == 'GET') {
+    getOverview();
+} elseif ($method == 'PUT') {
+    getOverview();// Platzhalter für eine Methode um eine Übersicht zu aktualisieren
+} else ($method == 'DELETE') {
+    getOverview();// Platzhalter für eine Methode um eine Übersicht zu löschen
+} 
+function getOverview{
+//Ende REST Teil*/
+
 // Funktion, mit der eine API zur openMensa-API aufgebaut werden kann, die nicht von unserem Hosting-Provider geblockt wird
 function get_data($url) {
     $ch = curl_init();
@@ -23,7 +37,7 @@ function get_data($url) {
 }
 
 // Daten für Mensa ziehen
-// Mensa Nummer 33 ist die Mensa Enzbergerstraße Karlsruhe -> Mensa der DHBW Karlsruhe
+// Mensa Nummer 33 ist die Mensa Erzbergerstraße 121, Karlsruhe -> Mensa der DHBW Karlsruhe
 $mensa = 33;
 $mensa_information = "http://openmensa.org/api/v2/canteens/" . $mensa . ".json/";
 $mensa_information_json_string = get_data($mensa_information);
@@ -65,6 +79,9 @@ $overview["mahlzeit"] = $mahlzeit;
 
 // Übertragung der Informationen ans Frontend -> app.js
 echo json_encode($overview, true);
+
+//REST Teil Klammer
+//}
 
 // Schließen der Datenbankverbindung
 $mysqli->close();
