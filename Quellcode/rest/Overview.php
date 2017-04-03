@@ -9,7 +9,7 @@ include '../dbconnection.php';
 $method = strtoupper($_SERVER['REQUEST_METHOD']);
 
 if ($method == 'POST') {
-    // Platzhalter für eine Mtehode, um Übersicht zu speichern
+    // Platzhalter für eine Methode, um Übersicht zu speichern
 } elseif ($method == 'GET') {
     getOverview();
 } elseif ($method == 'PUT') {
