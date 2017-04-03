@@ -1,6 +1,6 @@
 ﻿# WICHTIG
 
 Erklärung der Ordnerstruktur:
-- <b>Dokumente</b>: Hier finden sich alle für das Projekt relevanten Dokumente.
-- "Quellcode": Hier finded sich das eigendliche Projekt mit allen erstellen Quellcode-Dateien
-- "platforms", "plugins", "www" und "config.xml": Ordner die zu unserer programmierten App gehören. Diese müssen sich im Hauptverzeichnis von GitHub befinden um die ordnungsgemäße Funktion unserer Android-App zu garantieren.
+- <b>Dokumente</b>: enthält alle für das Projekt relevanten Dokumente (Use Cases, Personas, Technologie-Stack, ..).
+- <b>Quellcode</b>: enthält den Quellcode des Projekts mit allen erstellen Quellcode-Dateien
+- <b>platforms</b>, <b>plugins</b>, <b>www</b> und <i>config.xml</i>: sind Ordner und Dateien, die zur Erzeugung unserer Android-App mit Adobe PhoneGap Build benötigt werden. PhoneGap kann die Dateien nur aus dem Hauptverzeichnis des GitHub Repositories beziehen, um eine .apk-Datei zu erzeugen.
